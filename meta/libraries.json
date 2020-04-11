@@ -1,0 +1,14 @@
+{
+    "key": "crypto3",
+    "name": "Crypto3",
+    "authors": [
+        "Mikhail Komarov"
+    ],
+    "description": "Cryptography framework",
+    "category": [
+        "Cryptography"
+    ],
+    "maintainers": [
+        "Mikhail Komarov <nemo -at- nil.foundation>"
+    ]
+}

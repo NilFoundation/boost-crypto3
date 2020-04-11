@@ -6,8 +6,8 @@
 // http://www.boost.org/LICENSE_1_0.txt
 //---------------------------------------------------------------------------//
 
-#ifndef CRYPTO3_SM3_HPP
-#define CRYPTO3_SM3_HPP
+#ifndef CRYPTO3_HASH_SM3_HPP
+#define CRYPTO3_HASH_SM3_HPP
 
 #include <nil/crypto3/hash/detail/block_stream_processor.hpp>
 #include <nil/crypto3/hash/detail/merkle_damgard_construction.hpp>
@@ -198,7 +198,7 @@ namespace nil {
             public:
                 struct construction {
                     struct params_type {
-                        typedef typename stream_endian::little_octet_big_bit digest_endian;
+                        typedef typename policy_type::digest_endian digest_endian;
 
                         constexpr static const std::size_t length_bits = 0;
                         constexpr static const std::size_t digest_bits = policy_type::digest_bits;
@@ -211,7 +211,7 @@ namespace nil {
                 template<typename StateAccumulator, std::size_t ValueBits>
                 struct stream_processor {
                     struct params_type {
-                        typedef typename stream_endian::little_octet_big_bit endian;
+                        typedef typename policy_type::digest_endian digest_endian;
 
                         constexpr static const std::size_t value_bits = ValueBits;
                     };

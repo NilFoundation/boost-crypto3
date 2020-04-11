@@ -60,13 +60,13 @@ dkms.conf
 
 # Precompiled Headers
 
-# Compiled Dynamic libraries
+# Compiled Dynamic packages
 
 # Fortran module files
 *.mod
 *.smod
 
-# Compiled Static libraries
+# Compiled Static packages
 *.lai
 
 # Executables

@@ -9,7 +9,8 @@
 #ifndef CRYPTO3_HASH_CUBEHASH_HPP
 #define CRYPTO3_HASH_CUBEHASH_HPP
 
-#include <nil/crypto3/hash/detail/cubehash_policy.hpp>
+#include <nil/crypto3/hash/detail/cubehash/cubehash_policy.hpp>
+
 #include <nil/crypto3/hash/detail/merkle_damgard_construction.hpp>
 #include <nil/crypto3/hash/detail/block_stream_processor.hpp>
 
@@ -57,9 +58,10 @@ namespace nil {
             template<unsigned r, unsigned b, unsigned h>
             struct cubehash_finalizer {
                 typedef detail::cubehash_policy<r, b, h> policy_type;
+
                 typedef typename policy_type::state_type state_type;
 
-                inline void operator()(state_type &state) const {
+                inline void operator()(state_type &state, std::size_t = std::size_t()) const {
                     state[31] ^= 1;
                     policy_type::transform_10r(state);
                 }
@@ -91,7 +93,7 @@ namespace nil {
             public:
                 struct construction {
                     struct params_type {
-                        typedef typename stream_endian::little_octet_big_bit digest_endian;
+                        typedef typename policy_type::digest_endian digest_endian;
 
                         constexpr static const std::size_t length_bits = 0;    // No length padding
                         constexpr static const std::size_t digest_bits = policy_type::digest_bits;
@@ -105,7 +107,7 @@ namespace nil {
                 template<typename StateAccumulator, std::size_t ValueBits>
                 struct stream_processor {
                     struct params_type {
-                        typedef typename stream_endian::little_octet_big_bit endian;
+                        typedef typename policy_type::digest_endian digest_endian;
 
                         constexpr static const std::size_t value_bits = ValueBits;
                     };
