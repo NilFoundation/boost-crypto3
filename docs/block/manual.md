@@ -7,8 +7,8 @@ The easiest way to use Crypto3.Block library is to use an algorithm with explici
  
 ```cpp
 
-#include <nil/crypto3/block/aria.hpp>
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/aria.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
 
 using namespace nil::crypto3;
 
@@ -22,8 +22,8 @@ Similar technique is available for ranges:
 
 ```cpp
 
-#include <nil/crypto3/block/aria.hpp>
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/aria.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
 
 using namespace nil::crypto3;
 
@@ -39,8 +39,8 @@ In case of accumulative encryption requirement is present, following example dem
 [accumulator](@ref block::accumulator_set) usage:
 
 ```cpp
-#include <nil/crypto3/block/aria.hpp>
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/aria.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
 
 using namespace nil::crypto3;
 

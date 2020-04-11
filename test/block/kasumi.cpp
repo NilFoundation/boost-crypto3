@@ -15,12 +15,12 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
-#include <nil/crypto3/block/algorithm/decrypt.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/algorithm/decrypt.hpp>
 
-#include <nil/crypto3/block/kasumi.hpp>
+#include <boost/crypto3/block/kasumi.hpp>
 
-using namespace nil::crypto3::block;
+using namespace boost::crypto3::block;
 
 namespace boost {
     namespace test_tools {

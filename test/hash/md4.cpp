@@ -10,10 +10,10 @@
 
 #define BOOST_TEST_MODULE md4_test
 
-#include <nil/crypto3/hash/algorithm/hash.hpp>
+#include <boost/crypto3/hash/algorithm/hash.hpp>
 
-#include <nil/crypto3/hash/md4.hpp>
-#include <nil/crypto3/hash/hash_state.hpp>
+#include <boost/crypto3/hash/md4.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -28,8 +28,8 @@
 #include <cstdio>
 #include <cstring>
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -87,7 +87,7 @@ BOOST_FIXTURE_TEST_CASE(md4_accumulator2, fixture) {
     // "abc" 
     md4::construction::type::block_type m = {{}};
     m[0] = 0x00636261;
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -110,9 +110,9 @@ BOOST_AUTO_TEST_CASE(md4_preprocessor1) {
 
 BOOST_AUTO_TEST_CASE(md4_preprocessor2) {
     accumulator_set<md4> acc;
-    acc(0x00000061, nil::crypto3::accumulators::bits = 8);
-    acc(0x00000062, nil::crypto3::accumulators::bits = 8);
-    acc(0x00000063, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000061, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000062, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000063, boost::crypto3::accumulators::bits = 8);
 
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 
@@ -126,7 +126,7 @@ BOOST_AUTO_TEST_CASE(md4_preprocessor2) {
 BOOST_AUTO_TEST_CASE(md4_preprocessor3) {
     accumulator_set<md4> acc;
     for (unsigned i = 0; i < 1000000; ++i) {
-        acc(0x00000061, nil::crypto3::accumulators::bits = 8);
+        acc(0x00000061, boost::crypto3::accumulators::bits = 8);
     }
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 
@@ -140,16 +140,16 @@ BOOST_AUTO_TEST_CASE(md4_preprocessor3) {
 BOOST_AUTO_TEST_CASE(md4_preprocessor4) {
     accumulator_set<md4> acc;
     for (unsigned i = 0; i < 8; ++i) {
-        acc(0x00000031, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000032, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000033, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000034, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000035, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000036, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000037, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000038, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000039, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000030, nil::crypto3::accumulators::bits = 8);
+        acc(0x00000031, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000032, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000033, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000034, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000035, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000036, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000037, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000038, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000039, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000030, boost::crypto3::accumulators::bits = 8);
     }
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 

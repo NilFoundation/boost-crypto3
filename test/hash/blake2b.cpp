@@ -16,13 +16,13 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <nil/crypto3/hash/algorithm/hash.hpp>
+#include <boost/crypto3/hash/algorithm/hash.hpp>
 
-#include <nil/crypto3/hash/blake2b.hpp>
-#include <nil/crypto3/hash/hash_state.hpp>
+#include <boost/crypto3/hash/blake2b.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {

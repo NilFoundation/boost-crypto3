@@ -8,11 +8,11 @@
 
 #define BOOST_TEST_MODULE sha_test
 
-#include <nil/crypto3/hash/algorithm/hash.hpp>
+#include <boost/crypto3/hash/algorithm/hash.hpp>
 
-#include <nil/crypto3/hash/sha.hpp>
-#include <nil/crypto3/hash/sha1.hpp>
-#include <nil/crypto3/hash/hash_state.hpp>
+#include <boost/crypto3/hash/sha.hpp>
+#include <boost/crypto3/hash/sha1.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
 
 #include <cassert>
 #include <cstring>
@@ -41,8 +41,8 @@
 #define BE 1, 1, 1, 0
 #define BF 1, 1, 1, 1
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 class fixture {
 public:

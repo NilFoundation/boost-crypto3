@@ -5,8 +5,8 @@
 ```
 #include <string>
 
-#include <nil/crypto3/codec/base.hpp>
-#include <nil/crypto3/codec/algorithm/encode.hpp>
+#include <boost/crypto3/codec/base.hpp>
+#include <boost/crypto3/codec/algorithm/encode.hpp>
 
 using namespace nil::crypto3::codec;
 

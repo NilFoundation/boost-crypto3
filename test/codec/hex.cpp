@@ -13,13 +13,13 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 
-#include <nil/crypto3/codec/algorithm/encode.hpp>
-#include <nil/crypto3/codec/algorithm/decode.hpp>
+#include <boost/crypto3/codec/algorithm/encode.hpp>
+#include <boost/crypto3/codec/algorithm/decode.hpp>
 
-#include <nil/crypto3/codec/hex.hpp>
+#include <boost/crypto3/codec/hex.hpp>
 
-using namespace nil::crypto3;
-using namespace nil::crypto3::codec;
+using namespace boost::crypto3;
+using namespace boost::crypto3::codec;
 
 namespace boost {
     namespace test_tools {

@@ -15,14 +15,14 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
-#include <nil/crypto3/block/algorithm/decrypt.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/algorithm/decrypt.hpp>
 
-#include <nil/crypto3/block/blowfish.hpp>
+#include <boost/crypto3/block/blowfish.hpp>
 
-using namespace nil::crypto3;
-using namespace nil::crypto3::block;
-using namespace nil::crypto3::detail;
+using namespace boost::crypto3;
+using namespace boost::crypto3::block;
+using namespace boost::crypto3::detail;
 
 namespace boost {
     namespace test_tools {

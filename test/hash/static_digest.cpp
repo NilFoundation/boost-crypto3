@@ -12,14 +12,14 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <nil/crypto3/detail/static_digest.hpp>
+#include <boost/crypto3/detail/static_digest.hpp>
 
 #include <iostream>
 #include <sstream>
 
 #include <cassert>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 BOOST_AUTO_TEST_SUITE(digest_test_suite)
 

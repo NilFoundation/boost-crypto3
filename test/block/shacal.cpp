@@ -15,24 +15,24 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <nil/crypto3/hash/sha1.hpp>
-#include <nil/crypto3/hash/sha2.hpp>
+#include <boost/crypto3/hash/sha1.hpp>
+#include <boost/crypto3/hash/sha2.hpp>
 
-#include <nil/crypto3/hash/hash_state.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
 
-#include <nil/crypto3/hash/detail/block_stream_processor.hpp>
-#include <nil/crypto3/hash/detail/davies_meyer_compressor.hpp>
-#include <nil/crypto3/hash/detail/merkle_damgard_construction.hpp>
+#include <boost/crypto3/hash/detail/block_stream_processor.hpp>
+#include <boost/crypto3/hash/detail/davies_meyer_compressor.hpp>
+#include <boost/crypto3/hash/detail/merkle_damgard_construction.hpp>
 
-#include <nil/crypto3/block/shacal.hpp>
-#include <nil/crypto3/block/shacal1.hpp>
-#include <nil/crypto3/block/shacal2.hpp>
+#include <boost/crypto3/block/shacal.hpp>
+#include <boost/crypto3/block/shacal1.hpp>
+#include <boost/crypto3/block/shacal2.hpp>
 
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
-#include <nil/crypto3/block/algorithm/decrypt.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/algorithm/decrypt.hpp>
 
-using namespace nil::crypto3;
-using namespace nil::crypto3::block;
+using namespace boost::crypto3;
+using namespace boost::crypto3::block;
 
 struct state_adder {
     template<typename T>

@@ -15,15 +15,15 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <nil/crypto3/block/algorithm/encrypt.hpp>
-#include <nil/crypto3/block/algorithm/decrypt.hpp>
+#include <boost/crypto3/block/algorithm/encrypt.hpp>
+#include <boost/crypto3/block/algorithm/decrypt.hpp>
 
-#include <nil/crypto3/block/threefish.hpp>
+#include <boost/crypto3/block/threefish.hpp>
 
-#include <nil/crypto3/codec/algorithm/decode.hpp>
-#include <nil/crypto3/codec/hex.hpp>
+#include <boost/crypto3/codec/algorithm/decode.hpp>
+#include <boost/crypto3/codec/hex.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 template<std::size_t Size>
 class fixture {
