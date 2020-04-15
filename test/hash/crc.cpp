@@ -8,12 +8,12 @@
 
 #define BOOST_TEST_MODULE crc_test
 
-#include <boost/crypto3/hash/algorithm/hash.hpp>
+#include <nil/crypto3/hash/algorithm/hash.hpp>
 
-#include <boost/crypto3/hash/crc.hpp>
-#include <boost/crypto3/hash/hash_state.hpp>
+#include <nil/crypto3/hash/crc.hpp>
+#include <nil/crypto3/hash/hash_state.hpp>
 
-#include <boost/crypto3/detail/static_digest.hpp>
+#include <nil/crypto3/detail/static_digest.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -24,9 +24,9 @@
 #include <cassert>
 #include <unordered_map>
 
-using namespace boost::crypto3::hash;
-using namespace boost::crypto3::accumulators;
-using boost::crypto3::detail::largest_prime;
+using namespace nil::crypto3::hash;
+using namespace nil::crypto3::accumulators;
+using nil::crypto3::detail::largest_prime;
 
 namespace boost {
     namespace test_tools {

@@ -8,12 +8,10 @@
 
 #define BOOST_TEST_MODULE cubehash_test
 
-#include <boost/crypto3/hash/algorithm/hash.hpp>
+#include <nil/crypto3/hash/algorithm/hash.hpp>
 
-#include <boost/crypto3/hash/detail/cubehash_policy.hpp>
-
-#include <boost/crypto3/hash/cubehash.hpp>
-#include <boost/crypto3/hash/hash_state.hpp>
+#include <nil/crypto3/hash/cubehash.hpp>
+#include <nil/crypto3/hash/hash_state.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -23,7 +21,7 @@
 #include <unordered_map>
 #include <cstdio>
 
-using namespace boost::crypto3;
+using namespace nil::crypto3;
 
 namespace boost {
     namespace test_tools {

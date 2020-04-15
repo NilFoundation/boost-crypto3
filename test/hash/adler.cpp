@@ -9,13 +9,13 @@
 
 #define BOOST_TEST_MODULE adler_test
 
-#include <boost/crypto3/hash/adler.hpp>
-#include <boost/crypto3/hash/hash_state.hpp>
+#include <nil/crypto3/hash/adler.hpp>
+#include <nil/crypto3/hash/hash_state.hpp>
 
-#include <boost/crypto3/detail/primes.hpp>
-#include <boost/crypto3/detail/static_digest.hpp>
+#include <nil/crypto3/detail/primes.hpp>
+#include <nil/crypto3/detail/static_digest.hpp>
 
-#include <boost/crypto3/hash/algorithm/hash.hpp>
+#include <nil/crypto3/hash/algorithm/hash.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -27,9 +27,9 @@
 #include <string>
 #include <unordered_map>
 
-using namespace boost::crypto3::hash;
-using namespace boost::crypto3::accumulators;
-using boost::crypto3::detail::largest_prime;
+using namespace nil::crypto3::hash;
+using namespace nil::crypto3::accumulators;
+using nil::crypto3::detail::largest_prime;
 
 namespace boost {
     namespace test_tools {

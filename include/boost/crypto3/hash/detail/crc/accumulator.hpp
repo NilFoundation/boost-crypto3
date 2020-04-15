@@ -131,6 +131,6 @@ namespace boost {
             }    // namespace impl
         }        // namespace accumulators
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_CRC_ACCUMULATOR_HPP

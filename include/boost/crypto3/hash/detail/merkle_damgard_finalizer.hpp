@@ -56,6 +56,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hash
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_MERKLE_DAMGARD_FINALIZER_HPP

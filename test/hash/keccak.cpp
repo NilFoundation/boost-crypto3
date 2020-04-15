@@ -8,12 +8,12 @@
 
 #define BOOST_TEST_MODULE keccak_test
 
-#include <boost/crypto3/detail/static_digest.hpp>
+#include <nil/crypto3/detail/static_digest.hpp>
 
-#include <boost/crypto3/hash/keccak.hpp>
-#include <boost/crypto3/hash/hash_state.hpp>
+#include <nil/crypto3/hash/keccak.hpp>
+#include <nil/crypto3/hash/hash_state.hpp>
 
-#include <boost/crypto3/hash/algorithm/hash.hpp>
+#include <nil/crypto3/hash/algorithm/hash.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -25,8 +25,8 @@
 #include <string>
 #include <unordered_map>
 
-using namespace boost::crypto3::hash;
-using namespace boost::crypto3::accumulators;
+using namespace nil::crypto3::hash;
+using namespace nil::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {

@@ -10,7 +10,7 @@ The easiest way to use Crypto3.Block library is to use an algorithm with explici
 #include <boost/crypto3/block/aria.hpp>
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 int main(int argc, char *argv[]) {
     
@@ -25,7 +25,7 @@ Similar technique is available for ranges:
 #include <boost/crypto3/block/aria.hpp>
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 int main(int argc, char *argv[]) {
     
@@ -42,7 +42,7 @@ In case of accumulative encryption requirement is present, following example dem
 #include <boost/crypto3/block/aria.hpp>
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 int main(int argc, char *argv[]) {
    block::accumulator_set<block::aria> acc;
