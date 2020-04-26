@@ -15,12 +15,12 @@ namespace boost {
         	namespace detail {
 	            struct nop_finalizer {
 	                template<typename T>
-	                void operator()(T &, T = T()) {
+	                void operator()(T &) {
 	                }
 	            };
         	}	// namespace detail
         }    	// namespace hash
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_NOP_FINALIZER_HPP

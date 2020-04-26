@@ -49,6 +49,6 @@ namespace boost {
             };
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

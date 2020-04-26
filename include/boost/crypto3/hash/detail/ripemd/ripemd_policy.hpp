@@ -160,6 +160,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hash
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_HASH_DETAIL_RIPEMD_POLICY_HPP

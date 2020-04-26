@@ -10,23 +10,22 @@
 
 #define BOOST_TEST_MODULE sha_test
 
-#include <nil/crypto3/hash/algorithm/hash.hpp>
-
-#include <nil/crypto3/hash/sha.hpp>
-#include <nil/crypto3/hash/hash_state.hpp>
-
-#include <cassert>
-#include <cstring>
-#include <unordered_map>
-
-#include <boost/cstdint.hpp>
+#include <iostream>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+
+#include <boost/crypto3/hash/algorithm/hash.hpp>
+
+#include <boost/crypto3/hash/sha.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
+
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -51,19 +50,32 @@ public:
     }
 };
 
-static const std::unordered_map<std::string, std::string> string_data = {
-    {"abc", "0164b8a914cd2a5e74c4f7ff082c4d97f1edf880"},
-    {"abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq", "d2516ee1acfa5baf33dfc1c471e438449ef134c8"},
-};
+const char *test_data = "data/sha.json";
 
+boost::property_tree::ptree string_data() {
+    boost::property_tree::ptree string_data;
+    boost::property_tree::read_json(test_data, string_data);
 
-BOOST_AUTO_TEST_SUITE(sha_stream_processor_test_suite)
+    return string_data; 
+}
 
-BOOST_DATA_TEST_CASE(sha_range_hash, boost::unit_test::data::make(string_data), array_element) {
+BOOST_AUTO_TEST_SUITE(sha_stream_processor_filedriven_test_suite)
+
+BOOST_DATA_TEST_CASE(sha_string_various_range_value_hash, string_data(), array_element) {
     std::string out = hash<sha>(array_element.first);
 
-    BOOST_CHECK_EQUAL(out, array_element.second);
+    BOOST_CHECK_EQUAL(out, array_element.second.data());
 }
+
+BOOST_DATA_TEST_CASE(sha_string_various_itr_value_hash, string_data(), array_element) {
+    std::string out = hash<sha>(array_element.first.begin(), array_element.first.end());
+
+    BOOST_CHECK_EQUAL(out, array_element.second.data());
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(sha_stream_processor_test_suite)
 
 BOOST_AUTO_TEST_CASE(sha_shortmsg_byte) {
 	// https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/NIST.FIPS.180.pdf
@@ -83,7 +95,7 @@ BOOST_FIXTURE_TEST_CASE(sha_accumulator1, fixture) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = 0x61626300;
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -99,7 +111,7 @@ BOOST_FIXTURE_TEST_CASE(sha_accumulator2, fixture) {
     hash_t::construction::type::block_type m = {
         {0x61626364, 0x62636465, 0x63646566, 0x64656667, 0x65666768, 0x66676869, 0x6768696a, 0x68696a6b, 0x696a6b6c,
          0x6a6b6c6d, 0x6b6c6d6e, 0x6c6d6e6f, 0x6d6e6f70, 0x6e6f7071, 0x00000000, 0x00000000}};
-    acc(m, nil::crypto3::accumulators::bits = 512 - 64);
+    acc(m, boost::crypto3::accumulators::bits = 512 - 64);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -113,9 +125,9 @@ BOOST_FIXTURE_TEST_CASE(sha_accumulator2, fixture) {
 BOOST_AUTO_TEST_CASE(sha_preprocessor1) {
     accumulator_set<sha> acc;
 
-    acc(0x61000000, nil::crypto3::accumulators::bits = 8);
-    acc(0x62000000, nil::crypto3::accumulators::bits = 8);
-    acc(0x63000000, nil::crypto3::accumulators::bits = 8);
+    acc(0x61000000, boost::crypto3::accumulators::bits = 8);
+    acc(0x62000000, boost::crypto3::accumulators::bits = 8);
+    acc(0x63000000, boost::crypto3::accumulators::bits = 8);
 
     sha::digest_type s = extract::hash<sha>(acc);
 
@@ -132,7 +144,7 @@ BOOST_AUTO_TEST_CASE(sha_preprocessor2) {
     accumulator_set<sha> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(0x61000000, nil::crypto3::accumulators::bits = 8);
+        acc(0x61000000, boost::crypto3::accumulators::bits = 8);
 
     sha::digest_type s = extract::hash<sha>(acc);
 

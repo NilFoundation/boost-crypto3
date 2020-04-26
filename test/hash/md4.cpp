@@ -10,26 +10,22 @@
 
 #define BOOST_TEST_MODULE md4_test
 
-#include <nil/crypto3/hash/algorithm/hash.hpp>
-
-#include <nil/crypto3/hash/md4.hpp>
-#include <nil/crypto3/hash/hash_state.hpp>
+#include <iostream>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <boost/static_assert.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 
-#include <iostream>
-#include <string>
-#include <unordered_map>
+#include <boost/crypto3/hash/algorithm/hash.hpp>
 
-#include <cstdio>
-#include <cstring>
+#include <boost/crypto3/hash/md4.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -52,23 +48,32 @@ public:
     }
 };
 
-static const std::unordered_map<std::string, std::string> string_data = {
-    {"a", "bde52cb31de33e46245e05fbdbd6fb24"},
-    {"abc", "a448017aaf21d8525fc10ae87aa6729d"},
-    {"message digest", "d9130a8164549fe818874806e1c7014b"},
-    {"abcdefghijklmnopqrstuvwxyz", "d79e1c308aa5bbcdeea8ed63df412da9"},
-    {"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789", "043f8582f241db351ce627e153e7f0e4"},
-    {"12345678901234567890123456789012345678901234567890123456789012345678901234567890",
-     "e33b4ddc9c38f2199c3e7b164fcc0536"}};
+const char *test_data = "data/md4.json";
 
+boost::property_tree::ptree string_data() {
+    boost::property_tree::ptree string_data;
+    boost::property_tree::read_json(test_data, string_data);
 
-BOOST_AUTO_TEST_SUITE(md4_stream_processor_test_suite)
+    return string_data; 
+}
 
-BOOST_DATA_TEST_CASE(md4_return_range_hash, boost::unit_test::data::make(string_data), array_element) {
+BOOST_AUTO_TEST_SUITE(md4_stream_processor_filedriven_test_suite)
+
+BOOST_DATA_TEST_CASE(md4_string_various_range_value_hash, string_data(), array_element) {
     std::string out = hash<md4>(array_element.first);
 
-    BOOST_CHECK_EQUAL(out, array_element.second);
+    BOOST_CHECK_EQUAL(out, array_element.second.data());
 }
+
+BOOST_DATA_TEST_CASE(md4_string_various_itr_value_hash, string_data(), array_element) {
+    std::string out = hash<md4>(array_element.first.begin(), array_element.first.end());
+
+    BOOST_CHECK_EQUAL(out, array_element.second.data());
+}
+
+BOOST_AUTO_TEST_SUITE_END()
+
+BOOST_AUTO_TEST_SUITE(md4_stream_processor_test_suite)
 
 BOOST_AUTO_TEST_CASE(md4_shortmsg_byte1) { 
     // "a"
@@ -104,7 +109,7 @@ BOOST_FIXTURE_TEST_CASE(md4_accumulator1, fixture) {
     // "a"
     md4::block_type m = {{}};
     m[0] = 0x00000061;
-    acc(m, nil::crypto3::accumulators::bits = 8);
+    acc(m, boost::crypto3::accumulators::bits = 8);
     md4::digest_type s = extract::hash<md4>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -118,7 +123,7 @@ BOOST_FIXTURE_TEST_CASE(md4_accumulator2, fixture) {
     // "abc" 
     md4::construction::type::block_type m = {{}};
     m[0] = 0x00636261;
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -134,7 +139,7 @@ BOOST_FIXTURE_TEST_CASE(md4_accumulator3, fixture) {
         {0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 
          0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 
          0x00010261, 0x67283609}};
-    acc(m1, nil::crypto3::accumulators::bits = 14 * 32 + 8);
+    acc(m1, boost::crypto3::accumulators::bits = 14 * 32 + 8);
 
     md4::digest_type s = extract::hash<md4>(acc);
 
@@ -145,7 +150,7 @@ BOOST_FIXTURE_TEST_CASE(md4_accumulator3, fixture) {
          0xa0a93453, 0x293c203d, 0x6e6f7071, 0x6f707172, 0x70717273, 0x71727374, 0x72737475, 
          0x00000000, 0x00000000}};
 
-    acc(m2, nil::crypto3::accumulators::bits = 6 * 32 - 8);
+    acc(m2, boost::crypto3::accumulators::bits = 6 * 32 - 8);
 
     s = extract::hash<md4>(acc);
 
@@ -169,9 +174,9 @@ BOOST_AUTO_TEST_CASE(md4_preprocessor1) {
 
 BOOST_AUTO_TEST_CASE(md4_preprocessor2) {
     accumulator_set<md4> acc;
-    acc(0x00000061, nil::crypto3::accumulators::bits = 8);
-    acc(0x00000062, nil::crypto3::accumulators::bits = 8);
-    acc(0x00000063, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000061, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000062, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000063, boost::crypto3::accumulators::bits = 8);
 
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 
@@ -186,7 +191,7 @@ BOOST_AUTO_TEST_CASE(md4_preprocessor3) {
     // million repetitions of "a"
     accumulator_set<md4> acc;
     for (unsigned i = 0; i < 1000000; ++i) {
-        acc(0x00000061, nil::crypto3::accumulators::bits = 8);
+        acc(0x00000061, boost::crypto3::accumulators::bits = 8);
     }
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 
@@ -201,16 +206,16 @@ BOOST_AUTO_TEST_CASE(md4_preprocessor4) {
     // 8 repetitions of "1234567890"
     accumulator_set<md4> acc;
     for (unsigned i = 0; i < 8; ++i) {
-        acc(0x00000031, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000032, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000033, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000034, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000035, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000036, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000037, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000038, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000039, nil::crypto3::accumulators::bits = 8);
-        acc(0x00000030, nil::crypto3::accumulators::bits = 8);
+        acc(0x00000031, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000032, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000033, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000034, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000035, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000036, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000037, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000038, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000039, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000030, boost::crypto3::accumulators::bits = 8);
     }
     md4::construction::type::digest_type s = extract::hash<md4>(acc);
 

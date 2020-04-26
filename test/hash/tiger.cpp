@@ -8,10 +8,10 @@
 
 #define BOOST_TEST_MODULE tiger_test
 
-#include <nil/crypto3/hash/algorithm/hash.hpp>
+#include <boost/crypto3/hash/algorithm/hash.hpp>
 
-#include <nil/crypto3/hash/tiger.hpp>
-#include <nil/crypto3/hash/hash_state.hpp>
+#include <boost/crypto3/hash/tiger.hpp>
+#include <boost/crypto3/hash/hash_state.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -26,7 +26,7 @@
 #include <cstdio>
 #include <cstring>
 
-using namespace nil::crypto3::hash;
+using namespace boost::crypto3::hash;
 
 namespace boost {
     namespace test_tools {

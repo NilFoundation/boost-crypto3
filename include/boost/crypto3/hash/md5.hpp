@@ -16,7 +16,7 @@
 #include <boost/crypto3/hash/detail/davies_meyer_compressor.hpp>
 #include <boost/crypto3/hash/detail/merkle_damgard_construction.hpp>
 #include <boost/crypto3/hash/detail/block_stream_processor.hpp>
-#include <boost/crypto3/hash/detail/merkle_damgard_finalizer.hpp>
+#include <boost/crypto3/hash/detail/merkle_damgard_padding.hpp>
 
 namespace boost {
     namespace crypto3 {
@@ -54,7 +54,7 @@ namespace boost {
                     typedef merkle_damgard_construction<
                         params_type, typename policy_type::iv_generator,
                         davies_meyer_compressor<block_cipher_type, detail::state_adder>,
-                        detail::merkle_damgard_finalizer<typename params_type::digest_endian, policy_type>>
+                        detail::merkle_damgard_padding<typename params_type::digest_endian, policy_type>>
                         type;
                 };
 
@@ -73,6 +73,6 @@ namespace boost {
 
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_HASH_MD5_HPP

@@ -18,6 +18,7 @@
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 #include <boost/crypto3/block/algorithm/decrypt.hpp>
 
+#include <boost/crypto3/block/aes.hpp>
 #include <boost/crypto3/block/rijndael.hpp>
 
 using namespace boost::crypto3;
@@ -29,7 +30,7 @@ namespace boost {
         namespace tt_detail {
             template<template<typename, typename> class P, typename K, typename V>
             struct print_log_value<P<K, V>> {
-                void operator()(std::ostream&, P<K, V> const&) {
+                void operator()(std::ostream &, P<K, V> const &) {
                 }
             };
         }    // namespace tt_detail

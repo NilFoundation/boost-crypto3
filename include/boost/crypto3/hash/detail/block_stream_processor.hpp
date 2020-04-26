@@ -17,7 +17,6 @@
 
 #include <boost/crypto3/hash/accumulators/bits_count.hpp>
 #include <boost/crypto3/hash/accumulators/parameters/bits.hpp>
-#include <boost/crypto3/hash/accumulators/parameters/salt.hpp>
 
 #include <boost/integer.hpp>
 #include <boost/static_assert.hpp>
@@ -142,6 +141,6 @@ namespace boost {
             };
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

@@ -55,6 +55,6 @@ namespace boost {
             };
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_MATYAS_MEYER_OSEAS_COMPRESSOR_HPP

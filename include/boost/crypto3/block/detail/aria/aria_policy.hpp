@@ -6,8 +6,8 @@
 // http://www.boost.org/LICENSE_1_0.txt
 //---------------------------------------------------------------------------//
 
-#ifndef CRYPTO3_ARIA_POLICY_HPP
-#define CRYPTO3_ARIA_POLICY_HPP
+#ifndef CRYPTO3_BLOCK_ARIA_POLICY_HPP
+#define CRYPTO3_BLOCK_ARIA_POLICY_HPP
 
 #include <array>
 
@@ -40,4 +40,4 @@ namespace boost {
     }            // namespace crypto3
 }    // namespace boost
 
-#endif    // CRYPTO3_ARIA_POLICY_HPP
+#endif    // CRYPTO3_BLOCK_ARIA_POLICY_HPP

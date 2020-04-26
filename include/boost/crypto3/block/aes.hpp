@@ -6,20 +6,21 @@
 // http://www.boost.org/LICENSE_1_0.txt
 //---------------------------------------------------------------------------//
 
-#ifndef CRYPTO3_ACCUMULATORS_PARAMETERS_SALT_HPP
-#define CRYPTO3_ACCUMULATORS_PARAMETERS_SALT_HPP
+#ifndef CRYPTO3_BLOCK_AES_HPP
+#define CRYPTO3_BLOCK_AES_HPP
 
-#include <boost/parameter/keyword.hpp>
-
-#include <boost/accumulators/accumulators_fwd.hpp>
+#include <boost/crypto3/block/rijndael.hpp>
 
 namespace boost {
     namespace crypto3 {
-        namespace accumulators {
-            BOOST_PARAMETER_KEYWORD(tag, salt)
-            BOOST_ACCUMULATORS_IGNORE_GLOBAL(salt)
-        }    // namespace accumulators
+        namespace block {
+            /*!
+             * @brief AES block cipher. Equals to Rijndael block cipher with 128 bit block length.
+             */
+            template<std::size_t KeyBits>
+            using aes = rijndael<KeyBits, 128>;
+        }    // namespace block
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
-#endif    // CRYPTO3_PARAMETERS_HPP
+#endif    // CRYPTO3_AES_HPP

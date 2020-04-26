@@ -29,7 +29,6 @@
 #include <boost/crypto3/hash/accumulators/bits_count.hpp>
 
 #include <boost/crypto3/hash/accumulators/parameters/bits.hpp>
-#include <boost/crypto3/hash/accumulators/parameters/salt.hpp>
 
 #include <boost/accumulators/statistics/count.hpp>
 
@@ -216,6 +215,6 @@ namespace boost {
             }    // namespace extract
         }        // namespace accumulators
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_ACCUMULATORS_HASH_HPP

@@ -113,6 +113,6 @@ namespace boost {
             }    // namespace impl
         }        // namespace accumulators
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_ADLER_ACCUMULATOR_HPP

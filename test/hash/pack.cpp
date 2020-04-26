@@ -11,7 +11,7 @@
 #include <boost/array.hpp>
 #include <boost/cstdint.hpp>
 
-#include <nil/crypto3/detail/pack.hpp>
+#include <boost/crypto3/detail/pack.hpp>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
@@ -23,9 +23,9 @@
 #include <cassert>
 #include <cstdio>
 
-using namespace nil::crypto3;
-using namespace nil::crypto3::detail;
-using namespace nil::crypto3::stream_endian;
+using namespace boost::crypto3;
+using namespace boost::crypto3::detail;
+using namespace boost::crypto3::stream_endian;
 
 BOOST_AUTO_TEST_SUITE(hash_pack_test_suite)
 
