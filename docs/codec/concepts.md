@@ -1,4 +1,6 @@
-# Codec Concepts # {#codec_concepts}
+# Concepts # {#codec_concepts}
+
+@tableofcontents
 
 ## Codec Concept ## {#codec_concept}
 
