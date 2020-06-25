@@ -18,13 +18,13 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
-#include <boost/crypto3/hash/algorithm/hash.hpp>
+#include <nil/crypto3/hash/algorithm/hash.hpp>
 
-#include <boost/crypto3/hash/ripemd.hpp>
-#include <boost/crypto3/hash/hash_state.hpp>
+#include <nil/crypto3/hash/ripemd.hpp>
+#include <nil/crypto3/hash/hash_state.hpp>
 
-using namespace boost::crypto3::hash;
-using namespace boost::crypto3::accumulators;
+using namespace nil::crypto3::hash;
+using namespace nil::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -229,7 +229,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_128_accumulator1, fixture<128>) {
     // "a" 
     ripemd<128>::block_type m = {{}};
     m[0] = 0x00000061;
-    acc(m, boost::crypto3::accumulators::bits = 8);
+    acc(m, nil::crypto3::accumulators::bits = 8);
     ripemd<128>::digest_type s = extract::hash<ripemd<128>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -243,7 +243,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_128_accumulator2, fixture<128>) {
     // "abc" 
     ripemd<128>::block_type m = {{}};
     m[0] = 0x00636261;
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
     ripemd<128>::digest_type s = extract::hash<ripemd<128>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -260,7 +260,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_128_accumulator3, fixture<128>) {
          0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 
          0x00010261, 0x67283609}};
 
-    acc(m1, boost::crypto3::accumulators::bits = 14 * 32 + 8);
+    acc(m1, nil::crypto3::accumulators::bits = 14 * 32 + 8);
 
     ripemd<128>::digest_type s = extract::hash<ripemd<128>>(acc);
 
@@ -271,7 +271,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_128_accumulator3, fixture<128>) {
          0xa0a93453, 0x293c203d, 0x6e6f7071, 0x6f707172, 0x70717273, 0x71727374, 0x72737475, 
          0x00000000, 0x00000000}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 6 * 32 - 8);
+    acc(m2, nil::crypto3::accumulators::bits = 6 * 32 - 8);
 
     s = extract::hash<ripemd<128>>(acc);
 
@@ -286,7 +286,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_160_accumulator1, fixture<160>) {
     // "a" 
     ripemd<160>::block_type m = {{}};
     m[0] = 0x00000061;
-    acc(m, boost::crypto3::accumulators::bits = 8);
+    acc(m, nil::crypto3::accumulators::bits = 8);
     ripemd<160>::digest_type s = extract::hash<ripemd<160>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -300,7 +300,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_160_accumulator2, fixture<160>) {
     // "abc" 
     ripemd<160>::block_type m = {{}};
     m[0] = 0x00636261;
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
     ripemd<160>::digest_type s = extract::hash<ripemd<160>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -317,7 +317,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_160_accumulator3, fixture<160>) {
          0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 
          0x00010261, 0x67283609}};
 
-    acc(m1, boost::crypto3::accumulators::bits = 14 * 32 + 8);
+    acc(m1, nil::crypto3::accumulators::bits = 14 * 32 + 8);
 
     ripemd<160>::digest_type s = extract::hash<ripemd<160>>(acc);
 
@@ -328,7 +328,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_160_accumulator3, fixture<160>) {
          0xa0a93453, 0x293c203d, 0x6e6f7071, 0x6f707172, 0x70717273, 0x71727374, 0x72737475, 
          0x00000000, 0x00000000}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 6 * 32 - 8);
+    acc(m2, nil::crypto3::accumulators::bits = 6 * 32 - 8);
 
     s = extract::hash<ripemd<160>>(acc);
 
@@ -343,7 +343,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_256_accumulator1, fixture<256>) {
     // "a" 
     ripemd<256>::block_type m = {{}};
     m[0] = 0x00000061;
-    acc(m, boost::crypto3::accumulators::bits = 8);
+    acc(m, nil::crypto3::accumulators::bits = 8);
     ripemd<256>::digest_type s = extract::hash<ripemd<256>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -357,7 +357,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_256_accumulator2, fixture<256>) {
     // "abc" 
     ripemd<256>::block_type m = {{}};
     m[0] = 0x00636261;
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
     ripemd<256>::digest_type s = extract::hash<ripemd<256>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -374,7 +374,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_256_accumulator3, fixture<256>) {
          0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 
          0x00010261, 0x67283609}};
 
-    acc(m1, boost::crypto3::accumulators::bits = 14 * 32 + 8);
+    acc(m1, nil::crypto3::accumulators::bits = 14 * 32 + 8);
 
     ripemd<256>::digest_type s = extract::hash<ripemd<256>>(acc);
 
@@ -385,7 +385,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_256_accumulator3, fixture<256>) {
          0xa0a93453, 0x293c203d, 0x6e6f7071, 0x6f707172, 0x70717273, 0x71727374, 0x72737475, 
          0x00000000, 0x00000000}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 6 * 32 - 8);
+    acc(m2, nil::crypto3::accumulators::bits = 6 * 32 - 8);
 
     s = extract::hash<ripemd<256>>(acc);
 
@@ -400,7 +400,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_320_accumulator1, fixture<320>) {
     // "a" 
     ripemd<320>::block_type m = {{}};
     m[0] = 0x00000061;
-    acc(m, boost::crypto3::accumulators::bits = 8);
+    acc(m, nil::crypto3::accumulators::bits = 8);
     ripemd<320>::digest_type s = extract::hash<ripemd<320>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -415,7 +415,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_320_accumulator2, fixture<320>) {
     // "abc" 
     ripemd<320>::block_type m = {{}};
     m[0] = 0x00636261;
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
     ripemd<320>::digest_type s = extract::hash<ripemd<320>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -433,7 +433,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_320_accumulator3, fixture<320>) {
          0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 0x61616161, 
          0x00010261, 0x67283609}};
 
-    acc(m1, boost::crypto3::accumulators::bits = 14 * 32 + 8);
+    acc(m1, nil::crypto3::accumulators::bits = 14 * 32 + 8);
 
     ripemd<320>::digest_type s = extract::hash<ripemd<320>>(acc);
 
@@ -445,7 +445,7 @@ BOOST_FIXTURE_TEST_CASE(ripemd_320_accumulator3, fixture<320>) {
          0xa0a93453, 0x293c203d, 0x6e6f7071, 0x6f707172, 0x70717273, 0x71727374, 0x72737475, 
          0x00000000, 0x00000000}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 6 * 32 - 8);
+    acc(m2, nil::crypto3::accumulators::bits = 6 * 32 - 8);
 
     s = extract::hash<ripemd<320>>(acc);
 
@@ -473,9 +473,9 @@ BOOST_AUTO_TEST_CASE(ripemd_128_preprocessor1) {
 BOOST_AUTO_TEST_CASE(ripemd_128_preprocessor2) {
     accumulator_set<ripemd<128>> acc;
 
-    acc(0x00000061, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000062, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000063, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000061, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000062, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000063, nil::crypto3::accumulators::bits = 8);
 
     ripemd<128>::digest_type s = extract::hash<ripemd<128>>(acc);
 
@@ -502,9 +502,9 @@ BOOST_AUTO_TEST_CASE(ripemd_160_preprocessor1) {
 BOOST_AUTO_TEST_CASE(ripemd_160_preprocessor2) {
     accumulator_set<ripemd<160>> acc;
 
-    acc(0x00000061, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000062, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000063, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000061, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000062, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000063, nil::crypto3::accumulators::bits = 8);
 
     ripemd<160>::digest_type s = extract::hash<ripemd<160>>(acc);
 
@@ -521,7 +521,7 @@ BOOST_AUTO_TEST_CASE(ripemd_160_preprocessor3) {
     accumulator_set<ripemd<160>> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(0x00000061, boost::crypto3::accumulators::bits = 8);
+        acc(0x00000061, nil::crypto3::accumulators::bits = 8);
 
     ripemd<160>::digest_type s = extract::hash<ripemd<160>>(acc);
 
@@ -548,9 +548,9 @@ BOOST_AUTO_TEST_CASE(ripemd_256_preprocessor1) {
 BOOST_AUTO_TEST_CASE(ripemd_256_preprocessor2) {
     accumulator_set<ripemd<256>> acc;
 
-    acc(0x00000061, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000062, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000063, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000061, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000062, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000063, nil::crypto3::accumulators::bits = 8);
 
     ripemd<256>::digest_type s = extract::hash<ripemd<256>>(acc);
 
@@ -578,9 +578,9 @@ BOOST_AUTO_TEST_CASE(ripemd_320_preprocessor1) {
 BOOST_AUTO_TEST_CASE(ripemd_320_preprocessor2) {
     accumulator_set<ripemd<320>> acc;
 
-    acc(0x00000061, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000062, boost::crypto3::accumulators::bits = 8);
-    acc(0x00000063, boost::crypto3::accumulators::bits = 8);
+    acc(0x00000061, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000062, nil::crypto3::accumulators::bits = 8);
+    acc(0x00000063, nil::crypto3::accumulators::bits = 8);
 
     ripemd<320>::digest_type s = extract::hash<ripemd<320>>(acc);
 

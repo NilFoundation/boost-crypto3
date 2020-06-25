@@ -1,26 +1,27 @@
 //---------------------------------------------------------------------------//
 // Copyright (c) 2018-2020 Mikhail Komarov <nemo@nil.foundation>
-// Copyright (c) 2020 Nikita Kaskov <nbering@nil.foundation>
 //
 // Distributed under the Boost Software License, Version 1.0
 // See accompanying file LICENSE_1_0.txt or copy at
 // http://www.boost.org/LICENSE_1_0.txt
 //---------------------------------------------------------------------------//
-#define BOOST_TEST_MODULE gost_28147_89_cipher_test
+
+#define BOOST_TEST_MODULE md4_cipher_test
 
 #include <iostream>
+#include <unordered_map>
 
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
-#include <boost/crypto3/block/algorithm/encrypt.hpp>
-#include <boost/crypto3/block/algorithm/decrypt.hpp>
+#include <nil/crypto3/block/md4.hpp>
 
-#include <boost/crypto3/block/gost_28147_89.hpp>
+#include <nil/crypto3/block/algorithm/encrypt.hpp>
+#include <nil/crypto3/block/algorithm/decrypt.hpp>
 
-using namespace boost::crypto3;
-using namespace boost::crypto3::block;
+using namespace nil::crypto3;
+using namespace nil::crypto3::block;
 
 struct state_adder {
     template<typename T>
@@ -33,10 +34,11 @@ struct state_adder {
     }
 };
 
+BOOST_TEST_DONT_PRINT_LOG_VALUE(md4::block_type)
 
-BOOST_AUTO_TEST_SUITE(gost_28147_89_test_suite)
+BOOST_AUTO_TEST_SUITE(md4_test_suite)
 
-BOOST_AUTO_TEST_CASE(gost_28147_89_test) {
+BOOST_AUTO_TEST_CASE(md4_single_block_encrypt1) {
 }
 
 BOOST_AUTO_TEST_SUITE_END()

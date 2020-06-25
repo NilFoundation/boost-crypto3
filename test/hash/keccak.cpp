@@ -18,13 +18,13 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
-#include <boost/crypto3/hash/algorithm/hash.hpp>
+#include <nil/crypto3/hash/algorithm/hash.hpp>
 
-#include <boost/crypto3/hash/keccak.hpp>
-#include <boost/crypto3/hash/hash_state.hpp>
+#include <nil/crypto3/hash/keccak.hpp>
+#include <nil/crypto3/hash/hash_state.hpp>
 
-using namespace boost::crypto3::hash;
-using namespace boost::crypto3::accumulators;
+using namespace nil::crypto3::hash;
+using namespace nil::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -111,6 +111,15 @@ BOOST_DATA_TEST_CASE(keccak_512_string_various_itr_value_hash, string_data("data
 BOOST_AUTO_TEST_SUITE_END()
 
 BOOST_AUTO_TEST_SUITE(keccak_stream_processor_test_suite)
+
+/* BOOST_AUTO_TEST_CASE(keccak_224_shortmsg_bit1) {
+    // Known-answer test from https://keccak.team/archives.html
+    // Len = 5, Msg = 48 
+    std::array<bool, 5> a = {0, 1, 0, 0, 1};
+    keccak_1600<224>::digest_type d = hash<keccak_1600<224>>(a);
+
+    BOOST_CHECK_EQUAL("e4384016d64610d75e0a5d73821a02d524e847a25a571b5940cd6450", std::to_string(d).data());
+}*/
 
 BOOST_AUTO_TEST_CASE(keccak_224_shortmsg_byte1) {
     // "a" 
@@ -227,7 +236,7 @@ BOOST_FIXTURE_TEST_CASE(keccak_224_accumulator, fixture<224>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -243,7 +252,7 @@ BOOST_FIXTURE_TEST_CASE(keccak_256_accumulator, fixture<256>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -259,7 +268,7 @@ BOOST_FIXTURE_TEST_CASE(keccak_384_accumulator, fixture<384>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -276,7 +285,7 @@ BOOST_FIXTURE_TEST_CASE(keccak_512_accumulator, fixture<512>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -307,9 +316,9 @@ BOOST_AUTO_TEST_CASE(keccak_224_preprocessor1) {
 BOOST_AUTO_TEST_CASE(keccak_224_preprocessor2) {
     accumulator_set<keccak_1600<224>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
     keccak_1600<224>::digest_type s = extract::hash<keccak_1600<224>>(acc);
 
@@ -336,9 +345,9 @@ BOOST_AUTO_TEST_CASE(keccak_256_preprocessor1) {
 BOOST_AUTO_TEST_CASE(keccak_256_preprocessor2) {
     accumulator_set<keccak_1600<256>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
     keccak_1600<256>::digest_type s = extract::hash<keccak_1600<256>>(acc);
 
@@ -366,9 +375,9 @@ BOOST_AUTO_TEST_CASE(keccak_384_preprocessor1) {
 BOOST_AUTO_TEST_CASE(keccak_384_preprocessor2) {
     accumulator_set<keccak_1600<384>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
     keccak_1600<384>::digest_type s = extract::hash<keccak_1600<384>>(acc);
 
@@ -397,9 +406,9 @@ BOOST_AUTO_TEST_CASE(keccak_512_preprocessor1) {
 BOOST_AUTO_TEST_CASE(keccak_512_preprocessor2) {
     accumulator_set<keccak_1600<512>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
     keccak_1600<512>::digest_type s = extract::hash<keccak_1600<512>>(acc);
 
