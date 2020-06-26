@@ -19,7 +19,7 @@
 
 #include <cassert>
 
-using namespace boost::crypto3;
+using namespace nil::crypto3;
 
 BOOST_AUTO_TEST_SUITE(digest_test_suite)
 

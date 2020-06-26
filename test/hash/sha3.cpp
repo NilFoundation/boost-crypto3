@@ -23,8 +23,8 @@
 #include <boost/crypto3/hash/sha3.hpp>
 #include <boost/crypto3/hash/hash_state.hpp>
 
-using namespace boost::crypto3::hash;
-using namespace boost::crypto3::accumulators;
+using namespace nil::crypto3::hash;
+using namespace nil::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -308,7 +308,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_224_accumulator1, fixture<224>) {
     // bit string {1, 1, 0, 0, 1}
     hash_t::construction::type::block_type m = {{}};
     m[0] = UINT64_C(0x1300000000000000);
-    acc(m, boost::crypto3::accumulators::bits = 5);
+    acc(m, nil::crypto3::accumulators::bits = 5);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -339,7 +339,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_224_accumulator3, fixture<224>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -359,7 +359,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_224_accumulator4, fixture<224>) {
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3000102094000b8), UINT64_C(0x67283609c1251003)}};
-    acc(m1, boost::crypto3::accumulators::bits = 16 * 64 + 8);
+    acc(m1, nil::crypto3::accumulators::bits = 16 * 64 + 8);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -373,7 +373,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_224_accumulator4, fixture<224>) {
          UINT64_C(0x6d6e6f7071727374), UINT64_C(0x6e6f707172737475), UINT64_C(0x0000000000000000),
          UINT64_C(0x0000000000000000), UINT64_C(0xc5000102094000b8), UINT64_C(0x67283609c1251003)}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 9 * 64 - 8);
+    acc(m2, nil::crypto3::accumulators::bits = 9 * 64 - 8);
 
     s = extract::hash<hash_t>(acc);
 
@@ -388,7 +388,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_256_accumulator1, fixture<256>) {
     // bit string {1, 1, 0, 0, 1}
     hash_t::construction::type::block_type m = {{}};
     m[0] = UINT64_C(0x1300000000000000);
-    acc(m, boost::crypto3::accumulators::bits = 5);
+    acc(m, nil::crypto3::accumulators::bits = 5);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -404,7 +404,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_256_accumulator2, fixture<256>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -424,7 +424,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_256_accumulator3, fixture<256>) {
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3000102094000b8)}};
-    acc(m1, boost::crypto3::accumulators::bits = 16 * 64 + 8);
+    acc(m1, nil::crypto3::accumulators::bits = 16 * 64 + 8);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -438,7 +438,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_256_accumulator3, fixture<256>) {
          UINT64_C(0x6d6e6f7071727374), UINT64_C(0x6e6f707172737475), UINT64_C(0x0000000000000000),
          UINT64_C(0x0000000000000000), UINT64_C(0xc5000102094000b8)}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 9 * 64 - 8);
+    acc(m2, nil::crypto3::accumulators::bits = 9 * 64 - 8);
 
     s = extract::hash<hash_t>(acc);
 
@@ -453,7 +453,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_384_accumulator1, fixture<384>) {
     // bit string {1, 1, 0, 0, 1}
     hash_t::construction::type::block_type m = {{}};
     m[0] = UINT64_C(0x1300000000000000);
-    acc(m, boost::crypto3::accumulators::bits = 5);
+    acc(m, nil::crypto3::accumulators::bits = 5);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -470,7 +470,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_384_accumulator2, fixture<384>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -490,7 +490,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_384_accumulator3, fixture<384>) {
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3000102030405)}};
-    acc(m1, boost::crypto3::accumulators::bits = 12 * 64 + 16);
+    acc(m1, nil::crypto3::accumulators::bits = 12 * 64 + 16);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -504,7 +504,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_384_accumulator3, fixture<384>) {
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a37374)}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 12 * 64 + 48);
+    acc(m2, nil::crypto3::accumulators::bits = 12 * 64 + 48);
 
     s = extract::hash<hash_t>(acc);
 
@@ -520,7 +520,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_512_accumulator1, fixture<512>) {
     // bit string {1, 1, 0, 0, 1}
     hash_t::construction::type::block_type m = {{}};
     m[0] = UINT64_C(0x1300000000000000);
-    acc(m, boost::crypto3::accumulators::bits = 5);
+    acc(m, nil::crypto3::accumulators::bits = 5);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -537,7 +537,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_512_accumulator2, fixture<512>) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = UINT64_C(0x6162630000000000);
-    acc(m, boost::crypto3::accumulators::bits = 24);
+    acc(m, nil::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -555,7 +555,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_512_accumulator3, fixture<512>) {
         {UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3)}};
-    acc(m1, boost::crypto3::accumulators::bits = 9 * 64);
+    acc(m1, nil::crypto3::accumulators::bits = 9 * 64);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -567,7 +567,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_512_accumulator3, fixture<512>) {
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3ff)}};
 
-    acc(m2, boost::crypto3::accumulators::bits = 8 * 64 + 56);
+    acc(m2, nil::crypto3::accumulators::bits = 8 * 64 + 56);
 
     s = extract::hash<hash_t>(acc);
 
@@ -579,7 +579,7 @@ BOOST_FIXTURE_TEST_CASE(sha3_512_accumulator3, fixture<512>) {
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa3a3a3a3a3a3a3a3),
          UINT64_C(0xa3a3a3a3a3a3a3a3), UINT64_C(0xa300901278231349), UINT64_C(0x5867344857584354)}};
 
-    acc(m3, boost::crypto3::accumulators::bits = 7 * 64 + 8);
+    acc(m3, nil::crypto3::accumulators::bits = 7 * 64 + 8);
 
     s = extract::hash<hash_t>(acc);
 
@@ -608,9 +608,9 @@ BOOST_AUTO_TEST_CASE(sha3_224_preprocessor1) {
 BOOST_AUTO_TEST_CASE(sha3_224_preprocessor2) {
     accumulator_set<sha3<224>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
     sha3<224>::digest_type s = extract::hash<sha3<224>>(acc);
 
@@ -627,7 +627,7 @@ BOOST_AUTO_TEST_CASE(sha3_224_preprocessor3) {
     accumulator_set<sha3<224>> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
+        acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
 
     sha3<224>::digest_type s = extract::hash<sha3<224>>(acc);
 
@@ -654,9 +654,9 @@ BOOST_AUTO_TEST_CASE(sha3_256_preprocessor1) {
 BOOST_AUTO_TEST_CASE(sha3_256_preprocessor2) {
     accumulator_set<sha3<256>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
 
     sha3<256>::digest_type s = extract::hash<sha3<256>>(acc);
@@ -674,7 +674,7 @@ BOOST_AUTO_TEST_CASE(sha3_256_preprocessor3) {
     accumulator_set<sha3<256>> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
+        acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
 
     sha3<256>::digest_type s = extract::hash<sha3<256>>(acc);
 
@@ -702,9 +702,9 @@ BOOST_AUTO_TEST_CASE(sha3_384_preprocessor1) {
 BOOST_AUTO_TEST_CASE(sha3_384_preprocessor2) {
     accumulator_set<sha3<384>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
 
     sha3<384>::digest_type s = extract::hash<sha3<384>>(acc);
@@ -723,7 +723,7 @@ BOOST_AUTO_TEST_CASE(sha3_384_preprocessor3) {
     accumulator_set<sha3<384>> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
+        acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
 
     sha3<384>::digest_type s = extract::hash<sha3<384>>(acc);
 
@@ -752,9 +752,9 @@ BOOST_AUTO_TEST_CASE(sha3_512_preprocessor1) {
 BOOST_AUTO_TEST_CASE(sha3_512_preprocessor2) {
     accumulator_set<sha3<512>> acc;
 
-    acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6200000000000000), boost::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x6300000000000000), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6200000000000000), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x6300000000000000), nil::crypto3::accumulators::bits = 8);
 
 
     sha3<512>::digest_type s = extract::hash<sha3<512>>(acc);
@@ -773,7 +773,7 @@ BOOST_AUTO_TEST_CASE(sha3_512_preprocessor3) {
     accumulator_set<sha3<512>> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(UINT64_C(0x6100000000000000), boost::crypto3::accumulators::bits = 8);
+        acc(UINT64_C(0x6100000000000000), nil::crypto3::accumulators::bits = 8);
 
     sha3<512>::digest_type s = extract::hash<sha3<512>>(acc);
 

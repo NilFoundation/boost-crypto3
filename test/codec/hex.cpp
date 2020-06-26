@@ -26,8 +26,8 @@
 
 #include <boost/crypto3/codec/hex.hpp>
 
-using namespace boost::crypto3;
-using namespace boost::crypto3::codec;
+using namespace nil::crypto3;
+using namespace nil::crypto3::codec;
 
 namespace boost {
     namespace test_tools {

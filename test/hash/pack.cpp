@@ -20,9 +20,10 @@
 
 #include <cstdio>
 
-using namespace boost::crypto3;
-using namespace boost::crypto3::detail;
-using namespace boost::crypto3::stream_endian;
+using namespace nil::crypto3;
+using namespace nil::crypto3::detail;
+using namespace nil::crypto3::stream_endian;
+
 
 
 BOOST_AUTO_TEST_SUITE(pack_imploder_test_suite)

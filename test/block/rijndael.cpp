@@ -19,16 +19,12 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
-#include <boost/foreach.hpp>
-#include <boost/assert.hpp>
-
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 #include <boost/crypto3/block/algorithm/decrypt.hpp>
 
-#include <boost/crypto3/block/aes.hpp>
-#include <boost/crypto3/block/rijndael.hpp>
+#include <boost/foreach.hpp>
+#include <boost/assert.hpp>
 
-#include <boost/crypto3/block/detail/key_value.hpp>
 
 using namespace boost::crypto3;
 using namespace boost::crypto3::block;

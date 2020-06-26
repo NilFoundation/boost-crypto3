@@ -17,7 +17,7 @@
 
 #include <boost/crypto3/codec/logic.hpp>
 
-using namespace boost::crypto3::codec;
+using namespace nil::crypto3::codec;
 
 typedef std::unordered_map<std::string, std::string>::value_type string_data_value_t;
 BOOST_TEST_DONT_PRINT_LOG_VALUE(string_data_value_t)

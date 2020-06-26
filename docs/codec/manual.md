@@ -10,7 +10,7 @@
 #include <boost/crypto3/codec/base.hpp>
 #include <boost/crypto3/codec/algorithm/encode.hpp>
 
-using namespace boost::crypto3::codec;
+using namespace nil::crypto3::codec;
 
 int main(int argc, char *argv[]) {
     std::string data = "Weird German 2 byte thing: Ã."

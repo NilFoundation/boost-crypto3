@@ -307,7 +307,7 @@ as well.
 This means there will be an accumulator set defined as follows:
 ```cpp
 using namespace boost::accumulators;
-using namespace boost::crypto3;
+using namespace nil::crypto3;
 
 boost::accumulator_set<
     accumulators::block<block::rijndael<128, 128>>,

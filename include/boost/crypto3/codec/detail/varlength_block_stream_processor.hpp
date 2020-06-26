@@ -110,6 +110,6 @@ namespace boost {
             };
         }    // namespace codec
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_FIXED_BLOCK_STREAM_PROCESSOR_HPP
