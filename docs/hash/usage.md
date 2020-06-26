@@ -11,7 +11,7 @@ The easiest way to use Crypto3.Hash library is to use an algorithm with implicit
 #include <boost/crypto3/hash/md5.hpp>
 #include <boost/crypto3/hash/algorithm/hash.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 int main(int argc, char *argv[]) {
     std::string input = "abc";
@@ -28,7 +28,7 @@ Similar technique is available for ranges:
 #include <boost/crypto3/hash/md5.hpp>
 #include <boost/crypto3/hash/algorithm/hash.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 int main(int argc, char *argv[]) {
     std::string input = "abc";
@@ -47,7 +47,7 @@ In case of accumulative hash requirement is present, following example demonstra
 #include <boost/crypto3/hash/md5.hpp>
 #include <boost/crypto3/hash/algorithm/hash.hpp>
 
-using namespace nil::crypto3;
+using namespace boost::crypto3;
 
 int main(int argc, char *argv[]) {
     hash::accumulator_set<hash::md5> acc;

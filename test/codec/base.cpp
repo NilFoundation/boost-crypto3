@@ -28,8 +28,8 @@
 
 #include <boost/crypto3/codec/base.hpp>
 
-using namespace nil::crypto3::codec;
-using namespace nil::crypto3;
+using namespace boost::crypto3::codec;
+using namespace boost::crypto3;
 
 namespace boost {
     namespace test_tools {

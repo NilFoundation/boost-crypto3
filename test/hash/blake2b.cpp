@@ -24,8 +24,8 @@
 #include <boost/crypto3/hash/blake2b.hpp>
 #include <boost/crypto3/hash/hash_state.hpp>
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -250,7 +250,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_224_accumulator1, fixture<224>) {
     // "a" 
     blake2b<224>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000000061);
-    acc(m, nil::crypto3::accumulators::bits = 8);
+    acc(m, boost::crypto3::accumulators::bits = 8);
     blake2b<224>::digest_type s = extract::hash<blake2b<224>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -264,7 +264,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_224_accumulator2, fixture<224>) {
     // "abc" 
     blake2b<224>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000636261);
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
     blake2b<224>::digest_type s = extract::hash<blake2b<224>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -278,7 +278,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_256_accumulator1, fixture<256>) {
     // "a" 
     blake2b<256>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000000061);
-    acc(m, nil::crypto3::accumulators::bits = 8);
+    acc(m, boost::crypto3::accumulators::bits = 8);
     blake2b<256>::digest_type s = extract::hash<blake2b<256>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -292,7 +292,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_256_accumulator2, fixture<256>) {
     // "abc" 
     blake2b<256>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000636261);
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
     blake2b<256>::digest_type s = extract::hash<blake2b<256>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -306,7 +306,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_384_accumulator1, fixture<384>) {
     // "a" 
     blake2b<384>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000000061);
-    acc(m, nil::crypto3::accumulators::bits = 8);
+    acc(m, boost::crypto3::accumulators::bits = 8);
     blake2b<384>::digest_type s = extract::hash<blake2b<384>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -321,7 +321,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_384_accumulator2, fixture<384>) {
     // "abc" 
     blake2b<384>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000636261);
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
     blake2b<384>::digest_type s = extract::hash<blake2b<384>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -336,7 +336,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_512_accumulator1, fixture<512>) {
     // "a" 
     blake2b<512>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000000061);
-    acc(m, nil::crypto3::accumulators::bits = 8);
+    acc(m, boost::crypto3::accumulators::bits = 8);
     blake2b<512>::digest_type s = extract::hash<blake2b<512>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -351,7 +351,7 @@ BOOST_FIXTURE_TEST_CASE(blake2b_512_accumulator2, fixture<512>) {
     // "abc" 
     blake2b<512>::block_type m = {{}};
     m[0] = UINT64_C(0x0000000000636261);
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
     blake2b<512>::digest_type s = extract::hash<blake2b<512>>(acc);
 
 #ifdef CRYPTO3_HASH_SHOW_PROGRESS
@@ -378,9 +378,9 @@ BOOST_AUTO_TEST_CASE(blake2b_224_preprocessor1) {
 BOOST_AUTO_TEST_CASE(blake2b_224_preprocessor2) {
     accumulator_set<blake2b<224>> acc;
 
-    acc(UINT64_C(0x0000000000000061), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000062), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000063), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000061), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000062), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000063), boost::crypto3::accumulators::bits = 8);
 
     blake2b<224>::digest_type s = extract::hash<blake2b<224>>(acc);
 
@@ -407,9 +407,9 @@ BOOST_AUTO_TEST_CASE(blake2b_256_preprocessor1) {
 BOOST_AUTO_TEST_CASE(blake2b_256_preprocessor2) {
     accumulator_set<blake2b<256>> acc;
 
-    acc(UINT64_C(0x0000000000000061), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000062), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000063), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000061), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000062), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000063), boost::crypto3::accumulators::bits = 8);
 
     blake2b<256>::digest_type s = extract::hash<blake2b<256>>(acc);
 
@@ -437,9 +437,9 @@ BOOST_AUTO_TEST_CASE(blake2b_384_preprocessor1) {
 BOOST_AUTO_TEST_CASE(blake2b_384_preprocessor2) {
     accumulator_set<blake2b<384>> acc;
 
-    acc(UINT64_C(0x0000000000000061), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000062), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000063), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000061), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000062), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000063), boost::crypto3::accumulators::bits = 8);
 
     blake2b<384>::digest_type s = extract::hash<blake2b<384>>(acc);
 
@@ -468,9 +468,9 @@ BOOST_AUTO_TEST_CASE(blake2b_512_preprocessor1) {
 BOOST_AUTO_TEST_CASE(blake2b_512_preprocessor2) {
     accumulator_set<blake2b<512>> acc;
 
-    acc(UINT64_C(0x0000000000000061), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000062), nil::crypto3::accumulators::bits = 8);
-    acc(UINT64_C(0x0000000000000063), nil::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000061), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000062), boost::crypto3::accumulators::bits = 8);
+    acc(UINT64_C(0x0000000000000063), boost::crypto3::accumulators::bits = 8);
 
     blake2b<512>::digest_type s = extract::hash<blake2b<512>>(acc);
 

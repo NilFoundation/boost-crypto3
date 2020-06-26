@@ -12,6 +12,9 @@
 #include <iostream>
 #include <cstdint>
 
+#include <boost/foreach.hpp>
+#include <boost/assert.hpp>
+
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
@@ -22,9 +25,7 @@
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 #include <boost/crypto3/block/algorithm/decrypt.hpp>
 
-#include <boost/foreach.hpp>
-#include <boost/assert.hpp>
-
+#include <boost/crypto3/block/aes.hpp>
 
 using namespace boost::crypto3;
 using namespace boost::crypto3::block;

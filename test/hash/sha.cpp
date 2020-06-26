@@ -24,8 +24,8 @@
 #include <boost/crypto3/hash/sha.hpp>
 #include <boost/crypto3/hash/hash_state.hpp>
 
-using namespace nil::crypto3::hash;
-using namespace nil::crypto3::accumulators;
+using namespace boost::crypto3::hash;
+using namespace boost::crypto3::accumulators;
 
 namespace boost {
     namespace test_tools {
@@ -95,7 +95,7 @@ BOOST_FIXTURE_TEST_CASE(sha_accumulator1, fixture) {
     hash_t::construction::type::block_type m = {{}};
 
     m[0] = 0x61626300;
-    acc(m, nil::crypto3::accumulators::bits = 24);
+    acc(m, boost::crypto3::accumulators::bits = 24);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -111,7 +111,7 @@ BOOST_FIXTURE_TEST_CASE(sha_accumulator2, fixture) {
     hash_t::construction::type::block_type m = {
         {0x61626364, 0x62636465, 0x63646566, 0x64656667, 0x65666768, 0x66676869, 0x6768696a, 0x68696a6b, 0x696a6b6c,
          0x6a6b6c6d, 0x6b6c6d6e, 0x6c6d6e6f, 0x6d6e6f70, 0x6e6f7071, 0x00000000, 0x00000000}};
-    acc(m, nil::crypto3::accumulators::bits = 512 - 64);
+    acc(m, boost::crypto3::accumulators::bits = 512 - 64);
 
     hash_t::digest_type s = extract::hash<hash_t>(acc);
 
@@ -125,9 +125,9 @@ BOOST_FIXTURE_TEST_CASE(sha_accumulator2, fixture) {
 BOOST_AUTO_TEST_CASE(sha_preprocessor1) {
     accumulator_set<sha> acc;
 
-    acc(0x61000000, nil::crypto3::accumulators::bits = 8);
-    acc(0x62000000, nil::crypto3::accumulators::bits = 8);
-    acc(0x63000000, nil::crypto3::accumulators::bits = 8);
+    acc(0x61000000, boost::crypto3::accumulators::bits = 8);
+    acc(0x62000000, boost::crypto3::accumulators::bits = 8);
+    acc(0x63000000, boost::crypto3::accumulators::bits = 8);
 
     sha::digest_type s = extract::hash<sha>(acc);
 
@@ -144,7 +144,7 @@ BOOST_AUTO_TEST_CASE(sha_preprocessor2) {
     accumulator_set<sha> acc;
 
     for (unsigned i = 0; i != 1000000; ++i)
-        acc(0x61000000, nil::crypto3::accumulators::bits = 8);
+        acc(0x61000000, boost::crypto3::accumulators::bits = 8);
 
     sha::digest_type s = extract::hash<sha>(acc);
 
