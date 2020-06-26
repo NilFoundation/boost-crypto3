@@ -1,5 +1,6 @@
 //---------------------------------------------------------------------------//
 // Copyright (c) 2018-2020 Mikhail Komarov <nemo@nil.foundation>
+// Copyright (c) 2020 Pavel Kharitonov <ipavrus@nil.foundation>
 //
 // Distributed under the Boost Software License, Version 1.0
 // See accompanying file LICENSE_1_0.txt or copy at
@@ -10,6 +11,7 @@
 #define CRYPTO3_TIGER_FUNCTIONS_HPP
 
 #include <boost/crypto3/hash/detail/tiger/basic_tiger_policy.hpp>
+#include <boost/crypto3/detail/make_uint_t.hpp>
 
 namespace boost {
     namespace crypto3 {
@@ -23,6 +25,10 @@ namespace boost {
 
                     constexpr static const std::size_t word_bits = policy_type::word_bits;
                     typedef typename policy_type::word_type word_type;
+
+                    constexpr static const std::size_t state_bits = basic_tiger_policy<DigestBits>::state_bits;
+                    constexpr static const std::size_t state_words = basic_tiger_policy<DigestBits>::state_words;
+                    typedef typename basic_tiger_policy<DigestBits>::state_type state_type;
 
                     constexpr static const std::size_t block_bits = basic_tiger_policy<DigestBits>::block_bits;
                     constexpr static const std::size_t block_words = basic_tiger_policy<DigestBits>::block_words;
@@ -50,97 +56,90 @@ namespace boost {
 
                     inline static void pass(word_type &A, word_type &B, word_type &C, block_type &X, byte_type mul) {
                         C ^= X[0];
-                        A -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(C, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(C, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(C, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(C, 1)];
-                        B += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(C, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(C, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(C, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(C, 6)];
+                        A -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 1)];
+                        B += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 6)];
                         B *= mul;
-
                         A ^= X[1];
-                        B -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(A, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(A, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(A, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(A, 1)];
-                        C += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(A, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(A, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(A, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(A, 6)];
+                        B -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 1)];
+                        C += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 6)];
                         C *= mul;
-
                         B ^= X[2];
-                        C -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(B, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(B, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(B, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(B, 1)];
-                        A += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(B, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(B, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(B, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(B, 6)];
+                        C -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 1)];
+                        A += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 6)];
                         A *= mul;
-
                         C ^= X[3];
-                        A -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(C, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(C, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(C, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(C, 1)];
-                        B += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(C, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(C, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(C, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(C, 6)];
+                        A -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 1)];
+                        B += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 6)];
                         B *= mul;
-
                         A ^= X[4];
-                        B -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(A, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(A, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(A, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(A, 1)];
-                        C += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(A, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(A, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(A, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(A, 6)];
+                        B -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 1)];
+                        C += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 6)];
                         C *= mul;
-
                         B ^= X[5];
-                        C -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(B, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(B, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(B, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(B, 1)];
-                        A += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(B, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(B, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(B, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(B, 6)];
+                        C -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 1)];
+                        A += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(B, 6)];
                         A *= mul;
-
                         C ^= X[6];
-                        A -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(C, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(C, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(C, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(C, 1)];
-                        B += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(C, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(C, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(C, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(C, 6)];
+                        A -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 1)];
+                        B += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(C, 6)];
                         B *= mul;
-
                         A ^= X[7];
-                        B -= policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(A, 7)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(A, 5)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(A, 3)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(A, 1)];
-                        C += policy_type::sbox1[policy_type::template extract_uint_t<CHAR_BIT>(A, 0)] ^
-                             policy_type::sbox2[policy_type::template extract_uint_t<CHAR_BIT>(A, 2)] ^
-                             policy_type::sbox3[policy_type::template extract_uint_t<CHAR_BIT>(A, 4)] ^
-                             policy_type::sbox4[policy_type::template extract_uint_t<CHAR_BIT>(A, 6)];
+                        B -= policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 7)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 5)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 3)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 1)];
+                        C += policy_type::sbox1[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 0)] ^
+                             policy_type::sbox2[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 2)] ^
+                             policy_type::sbox3[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 4)] ^
+                             policy_type::sbox4[::boost::crypto3::detail::extract_uint_t<CHAR_BIT>(A, 6)];
                         C *= mul;
                     }
                 };
-            }
-        }
-    }
-}
+            }   // namespace detail
+        }   // namespace hash
+    }   // namespace crypto3
+}    // namespace nil
 
-#endif //CRYPTO3_TIGER_FUNCTIONS_HPP
+#endif    // CRYPTO3_TIGER_FUNCTIONS_HPP

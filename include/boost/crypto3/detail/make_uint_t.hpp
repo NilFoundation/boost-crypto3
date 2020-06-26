@@ -40,6 +40,6 @@ namespace boost {
             }
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_MAKE_UINT_T_HPP

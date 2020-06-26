@@ -64,6 +64,6 @@ namespace boost {
             };
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BASIC_FUNCTIONS_HPP

@@ -35,7 +35,7 @@ namespace boost {
              * @note http://www.merkle.com/papers/Thesis1979.pdf
              */
             template<typename Params, typename IV, typename Compressor, typename Padding,
-            typename Finalizer = detail::nop_finalizer>
+                     typename Finalizer = detail::nop_finalizer>
             class merkle_damgard_construction {
             public:
                 typedef IV iv_generator;
@@ -86,29 +86,29 @@ namespace boost {
                     // Process block if block is full
                     if (total_seen && !block_seen)
                         process_block(b);
-                    
+
                     // Pad last message block
                     padding_functor padding;
                     padding(b, block_seen);
-                    
+
                     // Process block if total length cannot be appended
                     if (block_seen + length_bits > block_bits) {
                         process_block(b);
                         std::fill(b.begin(), b.end(), 0);
                     }
-                    
+
                     // Append total length to the last block
                     append_length<int>(b, total_seen);
-                    
+
                     // Process the last block
                     process_block(b);
-                    
+
                     // Apply finalizer
                     finalizer_functor()(state_);
 
                     // Convert digest to byte representation
                     digest_type d;
-                    pack_n<endian_type, word_bits, octet_bits>(state_.data(), digest_words, d.data(), digest_bytes);
+                    pack_from<endian_type, word_bits, octet_bits>(state_.begin(), state_.end(), d.begin());
                     return d;
                 }
 
@@ -137,7 +137,8 @@ namespace boost {
 
                     std::array<length_type, 1> length_array = {{length}};
                     std::array<word_type, length_words> length_words_array;
-                    pack<endian_type, length_bits, word_bits>(length_array, length_words_array);
+                    pack<endian_type, endian_type, length_bits, word_bits>(length_array.begin(), length_array.end(),
+                                                                           length_words_array.begin());
                     // Append length
                     for (std::size_t i = length_words; i; --i)
                         block[block_words - i] = length_words_array[length_words - i];
@@ -153,6 +154,6 @@ namespace boost {
 
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_HASH_MERKLE_DAMGARD_BLOCK_HASH_HPP

@@ -459,6 +459,6 @@ namespace boost {
         }
 
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

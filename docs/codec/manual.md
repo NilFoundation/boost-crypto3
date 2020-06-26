@@ -1,4 +1,6 @@
-# Codec Manual # {#codec_manual}
+# Manual # {#codec_manual}
+
+@tableofcontents
 
 ## Basic Example
 

@@ -1,26 +1,3 @@
-#---------------------------------------------------------------------------#
-# Copyright (c) 2018-2020 Mikhail Komarov <nemo@nil.foundation>
-#
-# Distributed under the Boost Software License, Version 1.0
-# See accompanying file LICENSE_1_0.txt or copy at
-# http://www.boost.org/LICENSE_1_0.txt
-#---------------------------------------------------------------------------#
-
-cmake_minimum_required(VERSION 3.12.4)
-
-cmake_policy(SET CMP0028 NEW)
-cmake_policy(SET CMP0042 NEW)
-cmake_policy(SET CMP0048 NEW)
-cmake_policy(SET CMP0057 NEW)
-
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/cmake"
-     "${CMAKE_CURRENT_LIST_DIR}/cmake/packages"
-     "${CMAKE_CURRENT_LIST_DIR}/cmake/modules/share/modules/cmake")
-
-include(CMConfig)
-include(CMDeploy)
-include(CMSetupVersion)
-
 if(NOT CMAKE_WORKSPACE_NAME OR NOT ("${CMAKE_WORKSPACE_NAME}" STREQUAL "crypto3"))
     cm_workspace(crypto3)
 endif()
@@ -43,9 +20,6 @@ endif()
 
 option(BUILD_WITH_CCACHE "Build with ccache usage" TRUE)
 option(BUILD_TESTS "Build unit tests" FALSE)
-
-configure_file(${CMAKE_CURRENT_LIST_DIR}/cmake/build.hpp.in
-               ${CMAKE_BINARY_DIR}/include/nil/${CMAKE_WORKSPACE_NAME}/build.hpp @ONLY)
 
 list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS
      include/nil/crypto3/codec/detail/base_policy.hpp

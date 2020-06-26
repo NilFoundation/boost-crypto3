@@ -106,6 +106,6 @@ namespace boost {
             vec.shrink_to_fit();
         }
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

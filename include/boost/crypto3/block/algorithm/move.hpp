@@ -31,6 +31,6 @@ namespace boost {
             }
         }    // namespace block
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_MOVE_HPP

@@ -311,6 +311,6 @@ namespace boost {
             return out;
         }
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

@@ -1,5 +1,6 @@
 //---------------------------------------------------------------------------//
 // Copyright (c) 2018-2020 Mikhail Komarov <nemo@nil.foundation>
+// Copyright (c) 2020 Nikita Kaskov <nbering@nil.foundation>
 //
 // Distributed under the Boost Software License, Version 1.0
 // See accompanying file LICENSE_1_0.txt or copy at
@@ -9,8 +10,8 @@
 #ifndef CRYPTO3_BLOCK_CIPHER_VALUE_HPP
 #define CRYPTO3_BLOCK_CIPHER_VALUE_HPP
 
-#include <type_traits>
-#include <iterator>
+//#include <type_traits>
+//#include <iterator>
 
 #include <boost/assert.hpp>
 #include <boost/concept_check.hpp>
@@ -18,6 +19,9 @@
 #include <boost/range/concepts.hpp>
 
 #include <boost/crypto3/block/accumulators/block.hpp>
+#include <boost/crypto3/block/cipher_state.hpp>
+
+#include <boost/crypto3/detail/digest.hpp>
 
 namespace boost {
     namespace crypto3 {
@@ -29,8 +33,8 @@ namespace boost {
                     typedef
                         typename boost::mpl::front<typename accumulator_set_type::features_type>::type accumulator_type;
 
-                    typedef typename CipherAccumulator::mode_type mode_type;
-                    typedef typename mode_type::encoder_type cipher_type;
+                    typedef typename accumulator_type::mode_type mode_type;
+                    typedef typename mode_type::cipher_type cipher_type;
 
                     ref_cipher_impl(const accumulator_set_type &acc) : accumulator_set(acc) {
                     }
@@ -44,8 +48,8 @@ namespace boost {
                     typedef
                         typename boost::mpl::front<typename accumulator_set_type::features_type>::type accumulator_type;
 
-                    typedef typename CipherAccumulator::mode_type mode_type;
-                    typedef typename mode_type::encoder_type cipher_type;
+                    typedef typename accumulator_type::mode_type mode_type;
+                    typedef typename mode_type::cipher_type cipher_type;
 
                     value_cipher_impl(const accumulator_set_type &acc) : accumulator_set(acc) {
                     }
@@ -130,7 +134,7 @@ namespace boost {
                         return this->accumulator_set;
                     }
 
-#ifdef CRYPTO3_ASCII_STRING_CODEC_OUTPUT
+#ifndef CRYPTO3_RAW_HASH_STRING_OUTPUT
 
                     template<typename Char, typename CharTraits, typename Alloc>
                     operator std::basic_string<Char, CharTraits, Alloc>() const {
@@ -201,6 +205,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace block
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_CODEC_POSTPROCESSOR_HPP

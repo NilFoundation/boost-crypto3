@@ -25,6 +25,6 @@ namespace boost {
 
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_DETAIL_STATE_ADDER_HPP

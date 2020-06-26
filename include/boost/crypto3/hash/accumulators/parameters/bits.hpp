@@ -20,6 +20,6 @@ namespace boost {
             BOOST_ACCUMULATORS_IGNORE_GLOBAL(bits)
         }    // namespace accumulators
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_PARAMETERS_HPP

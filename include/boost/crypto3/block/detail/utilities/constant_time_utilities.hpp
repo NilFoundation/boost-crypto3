@@ -140,6 +140,6 @@ namespace boost {
             }
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

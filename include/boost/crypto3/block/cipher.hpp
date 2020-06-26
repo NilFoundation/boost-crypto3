@@ -28,6 +28,6 @@ namespace boost {
             };
         }    // namespace block
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

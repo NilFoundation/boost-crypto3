@@ -19,6 +19,6 @@ namespace boost {
          * @brief Encoding algorithms are meant to provide encoding interface similar to STL algorithms' one.
          */
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_CODEC_HPP

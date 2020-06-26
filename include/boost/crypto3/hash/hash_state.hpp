@@ -24,6 +24,6 @@ namespace boost {
                                                      std::size_t>;
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_STREAM_PREPROCESSOR_HPP

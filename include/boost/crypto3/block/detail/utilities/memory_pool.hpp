@@ -195,6 +195,6 @@ namespace boost {
             size_t m_pool_size = 0;
         };
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

@@ -14,7 +14,6 @@
 #include <iterator>
 
 #include <boost/crypto3/detail/pack.hpp>
-#include <boost/crypto3/detail/pack_numeric.hpp>
 #include <boost/crypto3/detail/digest.hpp>
 
 #include <boost/integer.hpp>
@@ -74,15 +73,16 @@ namespace boost {
                 inline void operator()(InputIterator first, InputIterator last, std::random_access_iterator_tag) {
                     input_block_type block =
                         {};    // TODO: fill it with zero value for base32/64, and find true size for base58
-                    ::boost::crypto3::detail::pack<endian_type, value_bits, input_value_bits>(first, last,
-                                                                            std::inserter(block, block.begin()));
+                    ::boost::crypto3::detail::pack_to<endian_type, value_bits, input_value_bits>(
+                            first, last, std::inserter(block, block.begin()));
                     state(block);
                 }
 
                 template<typename InputIterator, typename Category>
                 inline void operator()(InputIterator first, InputIterator last, Category) {
                     input_block_type block = {0};
-                    ::boost::crypto3::detail::pack<endian_type, value_bits, input_value_bits>(first, last, std::back_inserter(block));
+                    ::boost::crypto3::detail::pack_to<endian_type, value_bits, input_value_bits>(
+                            first, last, block.begin());
                     state(block);
                 }
 
@@ -109,7 +109,7 @@ namespace boost {
                 StateAccumulator &state;
             };
         }    // namespace codec
-    }        // namespace crypto3
-}    // namespace boost
+    }    // namespace crypto3
+}    // namespace nil
 
 #endif    // CRYPTO3_FIXED_BLOCK_STREAM_PROCESSOR_HPP

@@ -48,6 +48,6 @@ namespace boost {
             };
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_HASH_DAVIES_MEYER_COMPRESSOR_HPP

@@ -577,6 +577,6 @@ namespace boost {
             store_be(x7, out + (7 * sizeof(T)));
         }
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

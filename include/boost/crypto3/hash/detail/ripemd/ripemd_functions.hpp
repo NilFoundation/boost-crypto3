@@ -19,7 +19,7 @@ namespace boost {
                 template<std::size_t DigestBits>
                 struct ripemd_functions : public ripemd_policy<DigestBits> {
                     typedef ripemd_policy<DigestBits> policy_type;
-                    
+
                     typedef typename policy_type::word_type word_type;
 
                     struct f1 {
@@ -76,6 +76,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hash
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_RIPEMD_FUNCTIONS_HPP

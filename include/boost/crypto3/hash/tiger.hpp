@@ -1,5 +1,6 @@
 //---------------------------------------------------------------------------//
 // Copyright (c) 2018-2020 Mikhail Komarov <nemo@nil.foundation>
+// Copyright (c) 2020 Pavel Kharitonov <ipavrus@nil.foundation>
 //
 // Distributed under the Boost Software License, Version 1.0
 // See accompanying file LICENSE_1_0.txt or copy at
@@ -12,12 +13,13 @@
 #include <boost/crypto3/hash/detail/tiger/tiger_policy.hpp>
 
 #include <boost/crypto3/hash/detail/merkle_damgard_construction.hpp>
-#include <boost/crypto3/hash/detail/merkle_damgard_padding.hpp>
+#include <boost/crypto3/hash/detail/tiger/tiger_padding.hpp>
 #include <boost/crypto3/hash/detail/block_stream_processor.hpp>
 
 namespace boost {
     namespace crypto3 {
         namespace hash {
+
             template<std::size_t DigestBits = 192, std::size_t Passes = 3>
             struct tiger_compressor {
                 typedef detail::tiger_policy<DigestBits, Passes> policy_type;
@@ -34,10 +36,9 @@ namespace boost {
                 typedef typename policy_type::block_type block_type;
 
                 static inline void process_block(state_type &state, const block_type &block) {
+
                     word_type A = state[0], B = state[1], C = state[2];
-
                     block_type input = block;
-
                     policy_type::pass(A, B, C, input, 5);
                     policy_type::mix(input);
                     policy_type::pass(C, A, B, input, 7);
@@ -75,14 +76,13 @@ namespace boost {
                     struct params_type {
                         typedef typename policy_type::digest_endian digest_endian;
 
-                        constexpr static const std::size_t length_bits = policy_type::word_bits * 2;
+                        constexpr static const std::size_t length_bits = policy_type::word_bits;
                         constexpr static const std::size_t digest_bits = policy_type::digest_bits;
                     };
 
-                    typedef merkle_damgard_construction<
-                        params_type, typename policy_type::iv_generator,
-                        tiger_compressor<DigestBits, Passes>,
-                        detail::merkle_damgard_padding<typename params_type::digest_endian, policy_type>>
+                    typedef merkle_damgard_construction<params_type, typename policy_type::iv_generator,
+                                                        tiger_compressor<DigestBits, Passes>,
+                                                        detail::tiger_padding<policy_type>>
                         type;
                 };
 
@@ -102,6 +102,6 @@ namespace boost {
             };
         }    // namespace hash
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

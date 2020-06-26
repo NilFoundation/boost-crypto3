@@ -64,6 +64,6 @@ namespace boost {
             };
         }    // namespace block
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_CIPHERS_SHACAL1_HPP

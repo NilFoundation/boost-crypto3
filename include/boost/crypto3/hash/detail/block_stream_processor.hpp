@@ -57,16 +57,13 @@ namespace boost {
                 typedef std::array<value_type, block_values> cache_type;
 
             protected:
-
                 BOOST_STATIC_ASSERT(block_bits % value_bits == 0);
 
                 inline void process_block(std::size_t block_seen = block_bits) {
                     using namespace boost::crypto3::detail;
-
                     // Convert the input into words
                     block_type block;
-                    pack<endian_type, value_bits, word_bits>(cache, block);
-
+                    pack_to<endian_type, value_bits, word_bits>(cache.begin(), cache.end(), block.begin());
                     // Process the block
                     acc(block, accumulators::bits = block_seen);
                 }
@@ -82,7 +79,6 @@ namespace boost {
                     }
                 }
 
-
                 template<typename InputIterator>
                 inline void update_n(InputIterator p, size_t n) {
                     for (; n; --n) {
@@ -97,13 +93,12 @@ namespace boost {
                 }
 
                 template<typename InputIterator>
-                inline void operator()(InputIterator b, InputIterator e,
-                                                                   std::random_access_iterator_tag) {
+                inline void operator()(InputIterator b, InputIterator e, std::random_access_iterator_tag) {
                     update_n(b, e);
                 }
 
                 template<typename InputIterator, typename Category>
-                inline  void operator()(InputIterator b, InputIterator e, Category) {
+                inline void operator()(InputIterator b, InputIterator e, Category) {
                     while (b != e) {
                         update_one(*b++);
                     }
@@ -112,7 +107,7 @@ namespace boost {
                 template<typename InputIterator>
                 inline void operator()(InputIterator b, InputIterator e) {
                     typedef typename std::iterator_traits<InputIterator>::iterator_category cat;
-                    
+
                     operator()(b, e, cat());
                 }
 
@@ -122,8 +117,7 @@ namespace boost {
                 }
 
             public:
-                block_stream_processor(accumulator_type &acc) :
-                    acc(acc), cache(), cache_seen(0) {
+                block_stream_processor(accumulator_type &acc) : acc(acc), cache(), cache_seen(0) {
                 }
 
                 virtual ~block_stream_processor() {
@@ -140,7 +134,7 @@ namespace boost {
                 std::size_t cache_seen;
             };
         }    // namespace hash
-    }        // namespace crypto3
-}    // namespace boost
+    }    // namespace crypto3
+}    // namespace nil
 
 #endif

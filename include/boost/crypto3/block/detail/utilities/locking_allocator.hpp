@@ -83,6 +83,6 @@ namespace boost {
             size_t m_locked_pages_size = 0;
         };
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

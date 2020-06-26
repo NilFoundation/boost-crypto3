@@ -15,6 +15,8 @@
 
 #include <boost/static_assert.hpp>
 
+#include <boost/crypto3/build.hpp>
+
 #include <boost/crypto3/block/detail/utilities/constant_time_utilities.hpp>
 
 /*
@@ -304,13 +306,14 @@ namespace boost {
 
                         const __m128i *keys = reinterpret_cast<const __m128i *>(encryption_key.data());
 
-                        ct::poison(plaintext.data(), policy_type::block_bytes);
+                        using namespace boost::crypto3::detail;
+                        poison(plaintext.data(), policy_type::block_bytes);
 
                         __m128i B = _mm_loadu_si128(in_mm);
                         _mm_storeu_si128(out_mm, detail::aes_ssse3_encrypt(B, keys, policy_type::rounds));
 
-                        ct::unpoison(plaintext.data(), policy_type::block_bytes);
-                        ct::unpoison(out.data(), policy_type::block_bytes);
+                        unpoison(plaintext.data(), policy_type::block_bytes);
+                        unpoison(out.data(), policy_type::block_bytes);
 
                         return out;
                     }
@@ -324,13 +327,14 @@ namespace boost {
 
                         const __m128i *keys = reinterpret_cast<const __m128i *>(decryption_key.data());
 
-                        ct::poison(plaintext.data(), policy_type::block_bytes);
+                        using namespace boost::crypto3::detail;
+                        poison(plaintext.data(), policy_type::block_bytes);
 
                         __m128i B = _mm_loadu_si128(in_mm);
                         _mm_storeu_si128(out_mm, detail::aes_ssse3_decrypt(B, keys, policy_type::rounds));
 
-                        ct::unpoison(plaintext.data(), policy_type::block_bytes);
-                        ct::unpoison(out.data(), policy_type::block_bytes);
+                        unpoison(plaintext.data(), policy_type::block_bytes);
+                        unpoison(out.data(), policy_type::block_bytes);
 
                         return out;
                     }
@@ -354,7 +358,7 @@ namespace boost {
                         __m128i key = _mm_loadu_si128(reinterpret_cast<const __m128i *>(input_key.data()));
 
                         __m128i *encryption_key_mm = reinterpret_cast<__m128i *>(encryption_key.data());
-                        __m128i *decryption_key_mm = reinterpret_cast<__m128i *>(encryption_key.data());
+                        __m128i *decryption_key_mm = reinterpret_cast<__m128i *>(decryption_key.data());
 
                         _mm_storeu_si128(decryption_key_mm + policy_type::rounds, _mm_shuffle_epi8(key, detail::sr[2]));
 
@@ -508,6 +512,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace block
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_SSSE3_RIJNDAEL_IMPL_HPP

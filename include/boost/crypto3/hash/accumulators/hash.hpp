@@ -23,7 +23,6 @@
 #include <boost/crypto3/detail/make_array.hpp>
 #include <boost/crypto3/detail/static_digest.hpp>
 #include <boost/crypto3/detail/endian_shift.hpp>
-#include <boost/crypto3/detail/unbounded_shift.hpp>
 #include <boost/crypto3/detail/inject.hpp>
 
 #include <boost/crypto3/hash/accumulators/bits_count.hpp>
@@ -60,7 +59,8 @@ namespace boost {
                     constexpr static const std::size_t length_words = length_bits / word_bits;
                     BOOST_STATIC_ASSERT(!length_bits || length_bits % word_bits == 0);
 
-                    typedef ::boost::crypto3::detail::injector<endian_type, word_bits, block_words, block_bits> injector_type;
+                    typedef ::boost::crypto3::detail::injector<endian_type, word_bits, block_words, block_bits>
+                        injector_type;
 
                 public:
                     typedef typename hash_type::digest_type result_type;
@@ -82,12 +82,12 @@ namespace boost {
 
                 protected:
                     inline void resolve_type(const block_type &value, std::size_t bits) {
-                        total_seen += bits == 0 ? block_bits : bits;
+                        // total_seen += bits == 0 ? block_bits : bits;
                         process(value, bits == 0 ? block_bits : bits);
                     }
 
                     inline void resolve_type(const word_type &value, std::size_t bits) {
-                        total_seen += bits == 0 ? word_bits : bits;
+                        // total_seen += bits == 0 ? word_bits : bits;
                         process(value, bits == 0 ? word_bits : bits);
                     }
 
@@ -95,11 +95,11 @@ namespace boost {
                         using namespace ::boost::crypto3::detail;
 
                         if (filled) {
-                            construction.process_block(cache, total_seen - value_seen);
+                            construction.process_block(cache, total_seen);
                             filled = false;
                         }
 
-                        std::size_t cached_bits = (total_seen - value_seen) % block_bits;
+                        std::size_t cached_bits = total_seen % block_bits;
 
                         if (cached_bits != 0) {
                             // If there are already any bits in the cache
@@ -109,6 +109,7 @@ namespace boost {
                                 (needed_to_fill_bits > value_seen) ? value_seen : needed_to_fill_bits;
 
                             injector_type::inject(value, new_bits_to_append, cache, cached_bits);
+                            total_seen += new_bits_to_append;
 
                             if (cached_bits == block_bits) {
                                 // If there are enough bits in the incoming value to fill the block
@@ -116,7 +117,7 @@ namespace boost {
 
                                 if (value_seen > new_bits_to_append) {
 
-                                    construction.process_block(cache, total_seen - value_seen + new_bits_to_append);
+                                    construction.process_block(cache, total_seen);
                                     filled = false;
 
                                     // If there are some remaining bits in the incoming value - put them into the cache,
@@ -126,10 +127,15 @@ namespace boost {
 
                                     injector_type::inject(
                                         value, value_seen - new_bits_to_append, cache, cached_bits, new_bits_to_append);
+
+                                    total_seen += value_seen - new_bits_to_append;
                                 }
                             }
 
                         } else {
+
+                            total_seen += value_seen;
+
                             // If there are no bits in the cache
                             if (value_seen == block_bits) {
                                 // The incoming value is a full block
@@ -150,18 +156,19 @@ namespace boost {
                         using namespace ::boost::crypto3::detail;
 
                         if (filled) {
-                            construction.process_block(cache, total_seen - value_seen);
+                            construction.process_block(cache, total_seen);
                             filled = false;
                         }
 
-                        std::size_t cached_bits = (total_seen - value_seen) % block_bits;
+                        std::size_t cached_bits = total_seen % block_bits;
 
-                        if (cached_bits != 0) {
+                        if (cached_bits % word_bits != 0) {
                             std::size_t needed_to_fill_bits = block_bits - cached_bits;
                             std::size_t new_bits_to_append =
                                 (needed_to_fill_bits > value_seen) ? value_seen : needed_to_fill_bits;
 
                             injector_type::inject(value, new_bits_to_append, cache, cached_bits);
+                            total_seen += new_bits_to_append;
 
                             if (cached_bits == block_bits) {
                                 // If there are enough bits in the incoming value to fill the block
@@ -170,7 +177,7 @@ namespace boost {
 
                                 if (value_seen > new_bits_to_append) {
 
-                                    construction.process_block(cache, total_seen - value_seen + new_bits_to_append);
+                                    construction.process_block(cache, total_seen);
                                     filled = false;
 
                                     // If there are some remaining bits in the incoming value - put them into the cache,
@@ -179,11 +186,15 @@ namespace boost {
 
                                     injector_type::inject(
                                         value, value_seen - new_bits_to_append, cache, cached_bits, new_bits_to_append);
+
+                                    total_seen += value_seen - new_bits_to_append;
                                 }
                             }
 
                         } else {
-                            cache[0] = value;
+                            cache[cached_bits / word_bits] = value;
+
+                            total_seen += value_seen;
                         }
                     }
 
@@ -215,6 +226,6 @@ namespace boost {
             }    // namespace extract
         }        // namespace accumulators
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_ACCUMULATORS_HASH_HPP

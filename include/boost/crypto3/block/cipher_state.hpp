@@ -31,10 +31,10 @@ namespace boost {
              */
             template<typename ProcessingMode>
             using accumulator_set = boost::accumulators::accumulator_set<
-                digest<ProcessingMode::input_block_bits>,
-                boost::accumulators::features<accumulators::tag::block<ProcessingMode>>>;
+                digest<ProcessingMode::block_bits>,
+                boost::accumulators::features<accumulators::tag::block<ProcessingMode>>, std::size_t>;
         }    // namespace block
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_CIPHER_STATE_HPP

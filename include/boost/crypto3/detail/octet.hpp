@@ -16,6 +16,6 @@ namespace boost {
         constexpr static const std::size_t octet_bits = CHAR_BIT;
         typedef boost::uint_t<octet_bits>::least octet_type;
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_OCTET_HPP

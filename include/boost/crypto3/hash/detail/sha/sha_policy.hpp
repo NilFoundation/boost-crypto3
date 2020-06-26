@@ -36,7 +36,6 @@ namespace boost {
 
                     typedef typename stream_endian::big_octet_big_bit digest_endian;
 
-
                     constexpr static const std::size_t digest_bits = 160;
                     constexpr static const std::uint8_t ieee1363_hash_id = 0x33;
 
@@ -59,6 +58,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hash
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_HASH_DETAIL_SHA_POLICY_HPP

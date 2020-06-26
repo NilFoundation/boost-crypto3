@@ -27,6 +27,9 @@ endmacro()
 option(BUILD_WITH_CCACHE "Build with ccache usage" TRUE)
 option(BUILD_TESTS "Build unit tests" FALSE)
 
+configure_file(${CMAKE_CURRENT_LIST_DIR}/cmake/build.hpp.in
+               ${CMAKE_BINARY_DIR}/include/nil/${CMAKE_WORKSPACE_NAME}/build.hpp @ONLY)
+
 list(APPEND CMAKE_CURRENT_PROJECTS
      block
      codec

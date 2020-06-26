@@ -103,6 +103,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace block
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_CIPHERS_DETAIL_SHACAL_FUNCTIONS_HPP

@@ -51,13 +51,13 @@ namespace boost {
                     }};
                 };
 
-                constexpr shacal_policy::constants_type const shacal_policy::constants;
+                constexpr typename shacal_policy::constants_type const shacal_policy::constants;
 
                 typedef shacal_policy shacal0_policy;
 
             }    // namespace detail
         }        // namespace block
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_CIPHERS_DETAIL_SHACAL_POLICY_HPP

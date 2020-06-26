@@ -17,9 +17,11 @@ namespace boost {
     namespace crypto3 {
         namespace hash {
             namespace detail {
-                template<typename Endianness, typename PolicyType>
+                template<typename Hash>
                 class blake2b_padding {
-                    typedef PolicyType policy_type;
+                    typedef Hash policy_type;
+
+                    typedef typename policy_type::digest_endian endian_type;
 
                     constexpr static const std::size_t word_bits = policy_type::word_bits;
                     typedef typename policy_type::word_type word_type;
@@ -28,7 +30,7 @@ namespace boost {
                     constexpr static const std::size_t block_words = policy_type::block_words;
                     typedef typename policy_type::block_type block_type;
 
-                    typedef ::boost::crypto3::detail::injector<Endianness, word_bits, block_words, block_bits>
+                    typedef ::boost::crypto3::detail::injector<endian_type, word_bits, block_words, block_bits>
                         injector_type;
 
                 public:
@@ -50,6 +52,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hash
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLAKE2B_PADDING_HPP

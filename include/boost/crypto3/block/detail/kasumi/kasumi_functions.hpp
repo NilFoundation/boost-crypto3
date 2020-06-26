@@ -34,6 +34,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace block
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_KASUMI_FUNCTIONS_CPP_HPP

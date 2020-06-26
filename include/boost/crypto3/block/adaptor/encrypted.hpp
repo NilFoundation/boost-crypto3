@@ -101,6 +101,6 @@ namespace boost {
             }
         }    // namespace adaptors
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_ENCRYPTED_HPP

@@ -118,8 +118,8 @@ namespace boost {
                     }
 
                     static inline void apply_round(std::uint8_t round, block_type &state, const key_schedule_type &w,
-                                            const constants_type &sbox, const shift_offsets_type &offsets,
-                                            const mm_type &mm) {
+                                                   const constants_type &sbox, const shift_offsets_type &offsets,
+                                                   const mm_type &mm) {
                         sub_bytes(state, sbox);
                         shift_rows(state, offsets);
                         state = mix_columns(state, mm);
@@ -171,10 +171,11 @@ namespace boost {
                     static void schedule_key(const key_type &key, key_schedule_type &encryption_key,
                                              key_schedule_type &decryption_key) {
                         // the first key_words words are the original key
-                        ::boost::crypto3::detail::pack<stream_endian::little_octet_big_bit, CHAR_BIT,
+                        ::boost::crypto3::detail::pack<stream_endian::big_octet_big_bit,
+                                                     stream_endian::little_octet_big_bit, CHAR_BIT,
                                                      policy_type::word_bits>(
                             key.begin(), key.begin() + policy_type::key_words * policy_type::word_bytes,
-                            encryption_key.begin(), encryption_key.begin() + policy_type::key_words);
+                            encryption_key.begin());
 
 #pragma clang loop unroll(full)
                         for (std::size_t i = policy_type::key_words; i < policy_type::key_schedule_words; ++i) {
@@ -189,8 +190,10 @@ namespace boost {
                         }
 
                         std::array<typename policy_type::byte_type, policy_type::key_schedule_bytes> bekey = {0};
-                        ::boost::crypto3::detail::pack<stream_endian::little_octet_big_bit, policy_type::word_bits,
-                                                     CHAR_BIT>(encryption_key, bekey);
+                        ::boost::crypto3::detail::pack<stream_endian::little_octet_big_bit,
+                                                     stream_endian::big_octet_big_bit, policy_type::word_bits,
+                                                     CHAR_BIT>(encryption_key.begin(), encryption_key.end(),
+                                                               bekey.begin());
 
 #pragma clang loop unroll(full)
                         for (std::uint8_t round = 1; round < policy_type::rounds; ++round) {
@@ -200,8 +203,10 @@ namespace boost {
                                  bekey.begin() + round * policy_type::block_bytes);
                         }
 
-                        ::boost::crypto3::detail::pack<stream_endian::little_octet_big_bit, CHAR_BIT,
-                                                     policy_type::word_bits>(bekey, decryption_key);
+                        ::boost::crypto3::detail::pack<stream_endian::big_octet_big_bit,
+                                                     stream_endian::little_octet_big_bit, CHAR_BIT,
+                                                     policy_type::word_bits>(bekey.begin(), bekey.end(),
+                                                                             decryption_key.begin());
                     }
                 };
             }    // namespace detail
@@ -210,6 +215,6 @@ namespace boost {
              */
         }    // namespace block
     }        // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_RIJNDAEL_IMPL_HPP

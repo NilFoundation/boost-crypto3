@@ -41,7 +41,6 @@ namespace boost {
                     constexpr static const std::size_t length_bits = word_bits * 2;
 
                     typedef typename stream_endian::big_octet_big_bit digest_endian;
-
                 };
 
                 template<std::size_t Version>
@@ -142,6 +141,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hash
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_HASH_DETAIL_SHA2_POLICY_HPP

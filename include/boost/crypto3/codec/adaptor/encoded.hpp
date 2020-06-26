@@ -59,5 +59,5 @@ namespace boost {
             };    // namespace adaptors
         }         // namespace codec
     }             // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 #endif    // CRYPTO3_ENCODED_HPP

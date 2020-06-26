@@ -56,6 +56,6 @@ namespace boost {
                              unused dummy rest value)                                                          \
     /* we got an one of _CRYPTO3_UNUSED_IMPL*, now call it */ (__VA_ARGS__)
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif

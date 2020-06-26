@@ -11,6 +11,23 @@
 
 namespace boost {
     namespace crypto3 {
+        namespace block {
+            /*!
+             * @brief
+             * @tparam Cipher
+             */
+            template<typename Cipher>
+            struct nop_padding {
+                typedef std::size_t size_type;
+
+                typedef Cipher cipher_type;
+
+                constexpr static const size_type block_bits = cipher_type::block_bits;
+                constexpr static const size_type block_words = cipher_type::block_words;
+                typedef typename cipher_type::block_type block_type;
+            };
+        }    // namespace block
+
         /*!
          * @defgroup block Block Ciphers
          *
@@ -23,6 +40,6 @@ namespace boost {
          * @brief Algorithms are meant to provide encryption interface similar to STL algorithms' one.
          */
     }    // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_BLOCK_HPP

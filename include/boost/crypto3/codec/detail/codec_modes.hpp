@@ -79,6 +79,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace codec
     }            // namespace crypto3
-}    // namespace boost
+}    // namespace nil
 
 #endif    // CRYPTO3_PREPROCESSING_MODES_HPP
