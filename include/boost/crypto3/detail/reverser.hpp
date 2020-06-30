@@ -14,13 +14,11 @@
 #include <boost/integer.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/endian/conversion.hpp>
-#include <boost/utility/enable_if.hpp>
-#include <boost/type_traits/is_same.hpp>
 
 #include <boost/crypto3/detail/unbounded_shift.hpp>
 #include <boost/crypto3/detail/stream_endian.hpp>
 
-#include <climits>
+#include <type_traits>
 
 namespace boost {
     namespace crypto3 {
@@ -50,8 +48,8 @@ namespace boost {
                 b = unbounded_shr<16>(((b * 0x0802LU & 0x22110LU) | (b * 0x8020LU & 0x88440LU)) * 0x10101LU);
 #elif (CRYPTO3_MP_WORD_BITS == 64)
                 b = (b * 0x0202020202ULL & 0x010884422010ULL) % 1023;
-#else                
-#warning "CRYPTO3_MP_WORD_BITS not set"
+#else
+#error "CRYPTO3_MP_WORD_BITS not set"
 #endif
             }
 
@@ -496,6 +494,6 @@ namespace boost {
             };
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_DETAIL_REVERSER_HPP
