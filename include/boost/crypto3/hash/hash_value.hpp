@@ -18,7 +18,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 template<typename HashAccumulatorSet>
                 struct ref_hash_impl {
@@ -196,7 +196,7 @@ namespace boost {
                     }
                 };
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

@@ -16,7 +16,7 @@ namespace boost {
         namespace block {
             /*!
              * @brief Shacal. Merkle-Damgård construction foundation for
-             * @ref boost::crypto3::hash::sha "SHA" hashes.
+             * @ref boost::crypto3::hashes::sha "SHA" hashes.
              *
              * @ingroup block
              *

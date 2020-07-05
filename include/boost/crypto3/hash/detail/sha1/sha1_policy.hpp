@@ -16,7 +16,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 struct sha1_policy {
                     typedef block::shacal1 block_cipher_type;
@@ -55,7 +55,7 @@ namespace boost {
                 };
 
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

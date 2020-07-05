@@ -15,7 +15,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 template<typename PolicyType>
                 class sha3_finalizer {
@@ -68,7 +68,7 @@ namespace boost {
                     }
                 };
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

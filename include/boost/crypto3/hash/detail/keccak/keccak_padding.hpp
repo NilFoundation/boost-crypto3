@@ -15,7 +15,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 template<typename Hash>
                 class keccak_1600_padding {
@@ -89,7 +89,7 @@ namespace boost {
                     }
                 };
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

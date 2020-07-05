@@ -20,11 +20,11 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             /*!
              * @brief MD4. Non-cryptographically secure checksum.
              *
-             * @ingroup hash
+             * @ingroup hashes
              */
 
             class md4 {
@@ -68,7 +68,7 @@ namespace boost {
                 };
             };
 
-        }    // namespace hash
+        }    // namespace hashes
     }        // namespace crypto3
 }    // namespace nil
 

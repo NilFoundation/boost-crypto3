@@ -24,7 +24,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
 
             /*!
              * @brief This will do the usual Merkle-Damgård-style strengthening,
@@ -133,7 +133,7 @@ namespace boost {
                 cache_type cache;
                 std::size_t cache_seen;
             };
-        }    // namespace hash
+        }    // namespace hashes
     }    // namespace crypto3
 }    // namespace nil
 

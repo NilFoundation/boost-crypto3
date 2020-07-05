@@ -24,7 +24,7 @@ namespace boost {
         namespace block {
             /*!
              * @brief MD5 block cipher. Stands as a foundation for
-             * @ref boost::crypto3::hash::md5 "MD5" hash.
+             * @ref boost::crypto3::hashes::md5 "MD5" hashes.
              *
              * @ingroup block
              *

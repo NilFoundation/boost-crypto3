@@ -12,9 +12,6 @@
 #include <iostream>
 #include <cstdint>
 
-#include <boost/foreach.hpp>
-#include <boost/assert.hpp>
-
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
@@ -22,10 +19,16 @@
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
+#include <boost/foreach.hpp>
+#include <boost/assert.hpp>
+
 #include <boost/crypto3/block/algorithm/encrypt.hpp>
 #include <boost/crypto3/block/algorithm/decrypt.hpp>
 
 #include <boost/crypto3/block/aes.hpp>
+#include <boost/crypto3/block/rijndael.hpp>
+
+#include <boost/crypto3/block/detail/key_value.hpp>
 
 using namespace boost::crypto3;
 using namespace boost::crypto3::block;
@@ -200,7 +203,7 @@ boost::property_tree::ptree string_data(const char *child_name) {
     return root_data.get_child(child_name);
 }
 
-BOOST_AUTO_TEST_SUITE(rijndael_stream_processor_filedriven_test_suite)
+BOOST_AUTO_TEST_SUITE(rijndael_stream_processor_data_driven_test_suite)
 
 BOOST_AUTO_TEST_CASE(rijndael_128_128_1) {
 

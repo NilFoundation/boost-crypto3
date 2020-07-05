@@ -14,7 +14,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 template<std::size_t DigestBits>
                 struct keccak_1600_policy : public ::boost::crypto3::detail::basic_functions<64> {
@@ -56,7 +56,7 @@ namespace boost {
                     };
                 };
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

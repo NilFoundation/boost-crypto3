@@ -25,9 +25,7 @@ macro(define_block_cipher_test name)
                                ${Boost_INCLUDE_DIRS})
 
     if(NOT CMAKE_CXX_STANDARD)
-        set_target_properties(block_${name}_test PROPERTIES 
-            CXX_STANDARD 14
-            CXX_STANDARD_REQUIRED TRUE)
+        set_target_properties(block_${name}_test PROPERTIES CXX_STANDARD 14)
     endif()
 
     get_target_property(target_type Boost::unit_test_framework TYPE)

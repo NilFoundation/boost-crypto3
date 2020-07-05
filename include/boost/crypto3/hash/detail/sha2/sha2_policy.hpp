@@ -18,7 +18,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
 
                 template<std::size_t CipherVersion>
@@ -139,7 +139,7 @@ namespace boost {
                 };
 
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

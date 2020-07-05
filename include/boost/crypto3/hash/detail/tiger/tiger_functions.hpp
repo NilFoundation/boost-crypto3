@@ -15,7 +15,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 template<std::size_t DigestBits>
                 struct tiger_functions : public basic_tiger_policy<DigestBits> {
@@ -138,7 +138,7 @@ namespace boost {
                     }
                 };
             }   // namespace detail
-        }   // namespace hash
+        }   // namespace hashes
     }   // namespace crypto3
 }    // namespace nil
 

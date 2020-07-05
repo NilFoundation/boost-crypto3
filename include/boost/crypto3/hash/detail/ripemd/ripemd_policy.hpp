@@ -17,7 +17,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             namespace detail {
                 template<std::size_t DigestBits>
                 struct basic_ripemd_policy : public ::boost::crypto3::detail::basic_functions<32> {
@@ -158,7 +158,7 @@ namespace boost {
                     };
                 };
             }    // namespace detail
-        }        // namespace hash
+        }        // namespace hashes
     }            // namespace crypto3
 }    // namespace nil
 

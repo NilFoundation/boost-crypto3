@@ -24,7 +24,7 @@ namespace boost {
         namespace block {
             /*!
              * @brief MD4 block cipher. Stands as a foundation for
-             * @ref boost::crypto3::hash::md4 "MD4" hash.
+             * @ref boost::crypto3::hashes::md4 "MD4" hashes.
              *
              * @ingroup block
              *

@@ -22,7 +22,7 @@
 
 namespace boost {
     namespace crypto3 {
-        namespace hash {
+        namespace hashes {
             template<std::size_t DigestBits = 512>
             class sha3_compressor {
             protected:
@@ -57,7 +57,7 @@ namespace boost {
             /*!
              * @brief
              * @tparam DigestBits
-             * @ingroup hash
+             * @ingroup hashes
              */
             template<std::size_t DigestBits = 512>
             class sha3 {
@@ -98,7 +98,7 @@ namespace boost {
                     typedef block_stream_processor<construction, StateAccumulator, params_type> type;
                 };
             };
-        }    // namespace hash
+        }    // namespace hashes
     }        // namespace crypto3
 }    // namespace nil
 
