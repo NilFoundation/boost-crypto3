@@ -16,6 +16,8 @@ path-constant here : . ;
 project : requirements
    <include>../include
    <include>../../..
+   <toolset>clang:<cxxflags>"-std=c++1y"
+   <toolset>darwin:<cxxflags>"-std=c++1y"
 ;
 
 test-suite block_tests :
@@ -31,8 +33,8 @@ test-suite block_tests :
 
 test-suite codec_tests :
 
-   [ run block/base.cpp ]
-   [ run block/hex.cpp ]
+   [ run codec/base.cpp ]
+   [ run codec/hex.cpp ]
 ;
 
 test-suite hash_tests :
