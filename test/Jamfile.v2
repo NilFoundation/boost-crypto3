@@ -16,9 +16,7 @@ path-constant here : . ;
 project : requirements
    <include>../include
    <include>../../..
-
-local enable-specfun = [ MATCH (--enable-specfun) : [ modules.peek : ARGV ] ] ;
-local disable-concepts = [ MATCH (--disable-concepts) : [ modules.peek : ARGV ] ] ;
+;
 
 test-suite block_tests :
 
