@@ -231,7 +231,6 @@ Each read generates 32 bits of output
 * @param maj The major version this public API was released in
 * @param min The minor version this public API was released in
 */
-//#define CRYPTO3_PUBLIC_API(maj, min) CRYPTO3_DLL
 #define CRYPTO3_PUBLIC_API(maj, min) CRYPTO3_DLL
 
 /**
