@@ -46,8 +46,6 @@ define_target_architecture(crypto3 ${CMAKE_TARGET_ARCHITECTURE})
 define_target_endianness(crypto3 ${CMAKE_TARGET_ARCHITECTURE})
 define_target_platform_features(crypto3)
 
-define_target_platform_size(crypto3 ${CMAKE_TARGET_ARCHITECTURE})
-
 check_sse()
 check_avx()
 
