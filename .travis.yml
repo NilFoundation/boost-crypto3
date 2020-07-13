@@ -437,6 +437,19 @@ matrix:
             env: TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 TEST_SUITE=hash_tests
             osx_image: xcode7.3
 
+before_install:
+    - if [[ $TRAVIS_OS_NAME == linux ]]; then
+        sudo apt-get update
+        sudo apt-get purge cmake
+        sudo apt-get install apt-transport-https ca-certificates gnupg software-properties-common wget
+        sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main'
+        sudo apt-get update
+        sudo apt-get install cmake
+      elif [[ $TRAVIS_OS_NAME == osx ]]; then
+        brew update;
+        brew upgrade cmake;
+      fi
+
 install:
     - cd ..
     - git clone -b develop --recurse-submodules https://github.com/boostorg/boost.git boost-root
@@ -462,9 +475,9 @@ script:
         echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
         proc=$(($(nproc) + 1));
-        elif [[ $TRAVIS_OS_NAME == osx ]]; then
+      elif [[ $TRAVIS_OS_NAME == osx ]]; then
         proc=$(($(sysctl -n hw.ncpu) + 1));
-        fi;
+      fi;
     - (cd libs/config/test && ../../../b2 config_info_travis_install toolset=$TOOLSET && ./config_info_travis);
     - (cd libs/crypto3/test && ../../../b2 -j$proc toolset=$TOOLSET $TEST_SUITE);
     - sudo ./b2 -j$proc install;
