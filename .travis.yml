@@ -462,7 +462,7 @@ matrix:
 
 install:
     - cd ..
-    - git clone -b develop --depth 1 https://github.com/boostorg/boost.git boost-root
+    - git clone -b develop --recurse-submodules https://github.com/boostorg/boost.git boost-root
     - git clone -b 3-current-predefs https://github.com/nilfoundation/predef.git predef
     - cd boost-root
     - git submodule update --init tools/build
