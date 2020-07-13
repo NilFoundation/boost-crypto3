@@ -462,8 +462,8 @@ matrix:
 
 install:
     - cd ..
-    - git clone -b develop --depth 1 https://github.com/boostorg/boost.git boost-root;
-    - git clone -b 3-current-predefs https://github.com/nilfoundation/predef.git predef;
+    - git clone -b develop --depth 1 https://github.com/boostorg/boost.git boost-root
+    - git clone -b 3-current-predefs https://github.com/nilfoundation/predef.git predef
     - cd boost-root
     - git submodule update --init tools/build
     - git submodule update --init libs/config
@@ -472,8 +472,8 @@ install:
     - git submodule update --init tools/boostdep
     - mkdir -p libs/crypto3
     - cp -r $TRAVIS_BUILD_DIR/* libs/crypto3
-    - rm -rf libs/predef
-    - cp -r $TRAVIS_BUILD_DIR/predef libs/predef
+    - rm -rf libs/predef && cd ../
+    - cp -r predef boost-root/libs/predef
     - python tools/boostdep/depinst/depinst.py multiprecision container predef
     - ./bootstrap.sh
     - ./b2 headers
