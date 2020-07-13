@@ -474,7 +474,9 @@ install:
     - cp -r $TRAVIS_BUILD_DIR/* libs/crypto3
     - rm -rf libs/predef && cd ../
     - cp -r predef boost-root/libs/predef && cd boost-root
-    - python tools/boostdep/depinst/depinst.py multiprecision container predef
+    - python tools/boostdep/depinst/depinst.py multiprecision
+    - python tools/boostdep/depinst/depinst.py container
+    - python tools/boostdep/depinst/depinst.py predef
     - ./bootstrap.sh
     - ./b2 headers
 
