@@ -45,12 +45,12 @@ namespace boost {
              */
             inline void reverse_byte(byte_type &b) {
 
-#if (BOOST_ARCH_CURRENT_WORD_BITS== 32)
+#if (BOOST_ARCH_CURRENT_WORD_BITS == 32)
                 b = unbounded_shr<16>(((b * 0x0802LU & 0x22110LU) | (b * 0x8020LU & 0x88440LU)) * 0x10101LU);
-#elif (BOOST_ARCH_CURRENT_WORD_BITS== 64)
+#elif (BOOST_ARCH_CURRENT_WORD_BITS == 64)
                 b = (b * 0x0202020202ULL & 0x010884422010ULL) % 1023;
 #else
-#error "BOOST_ARCH_CURRENT_WORD_BITSnot set"
+#error "BOOST_ARCH_CURRENT_WORD_BITS is not set"
 #endif
             }
 
@@ -109,10 +109,8 @@ namespace boost {
              *
              * @return
              */
-            template<typename UnitType,
-                     int UnitBits = sizeof(UnitType) * CHAR_BIT,
-                     typename std::enable_if<(UnitBits > CHAR_BIT), int>::type = 0>
-            inline void reverse_bits(UnitType &unit) {
+            template<typename UnitType, int UnitBits = sizeof(UnitType) * CHAR_BIT>
+            inline typename std::enable_if<(UnitBits > CHAR_BIT)>::type reverse_bits(UnitType &unit) {
                 boost::endian::endian_reverse_inplace(unit);
                 UnitType out = UnitType();
                 bit_in_unit_byte_reverser<UnitBits>::reverse(unit, out);
@@ -130,10 +128,8 @@ namespace boost {
              *
              * @return
              */
-            template<typename UnitType,
-                     int UnitBits = sizeof(UnitType) * CHAR_BIT,
-                     typename std::enable_if<(UnitBits == CHAR_BIT), int>::type = 0>
-            inline void reverse_bits(UnitType &unit) {
+            template<typename UnitType, int UnitBits = sizeof(UnitType) * CHAR_BIT>
+            inline typename std::enable_if<(UnitBits == CHAR_BIT)>::type reverse_bits(UnitType &unit) {
                 reverse_byte(unit);
             }
 
