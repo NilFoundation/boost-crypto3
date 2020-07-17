@@ -446,9 +446,9 @@ before_install:
         sudo apt-get update
         sudo apt-get install cmake
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
-        brew update;
-        brew upgrade cmake;
-      fi
+        brew update
+        brew upgrade cmake
+      fi;
 
 install:
     - cd ..
