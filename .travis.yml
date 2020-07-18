@@ -444,7 +444,7 @@ before_install:
         sudo apt-get install apt-transport-https ca-certificates gnupg software-properties-common wget;
         sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main';
         sudo apt-get update;
-        sudo apt-get install cmake;
+        sudo apt-get install --allow-unauthenticated cmake;
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
         brew update;
         brew upgrade cmake;
