@@ -460,10 +460,13 @@ install:
     - git submodule update --init tools/boost_install
     - git submodule update --init libs/headers
     - git submodule update --init tools/boostdep
+    - git submodule update --init libs/predef
+    - git submodule update --init libs/container
+    - git submodule update --init libs/multiprecision
     - mkdir -p libs/crypto3
     - cp -r $TRAVIS_BUILD_DIR/* libs/crypto3
-    - rm -rf libs/predef && cd ../
-    - cp -r predef boost-root/libs/predef && cd boost-root
+    - rm -rf libs/predef
+    - cp -r ../predef libs/predef
     - python tools/boostdep/depinst/depinst.py multiprecision
     - python tools/boostdep/depinst/depinst.py container
     - python tools/boostdep/depinst/depinst.py predef
