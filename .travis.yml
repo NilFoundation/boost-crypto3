@@ -454,6 +454,7 @@ install:
     - cd ..
     - git clone -b develop --recurse-submodules https://github.com/boostorg/boost.git boost-root
     - git clone -b 3-current-predefs https://github.com/nilfoundation/predef.git predef
+    - git clone -b 2-malloc-function-attribute https://github.com/nilfoundation/config.git config
     - cd boost-root
     - git submodule update --init tools/build
     - git submodule update --init libs/config
@@ -463,10 +464,13 @@ install:
     - python tools/boostdep/depinst/depinst.py multiprecision
     - python tools/boostdep/depinst/depinst.py container
     - python tools/boostdep/depinst/depinst.py predef
+    - python tools/boostdep/depinst/depinst.py config
     - mkdir -p libs/crypto3
     - cp -r $TRAVIS_BUILD_DIR/* libs/crypto3
     - rm -rf libs/predef
     - cp -r ../predef libs/predef
+    - rm -rf libs/config
+    - cp -r ../config libs/config
     - ./bootstrap.sh
     - ./b2 headers
 
