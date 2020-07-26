@@ -20,33 +20,33 @@ project : requirements
 
 test-suite block_tests :
 
-   [ run block/kasumi.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run block/md4.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run block/md5.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run block/pack.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run block/rijndael.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run block/shacal.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run block/shacal2.cpp /boost/test//boost_unit_test_framework/<link>static]
+   [ run block/kasumi.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/md4.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/md5.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/pack.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/rijndael.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/shacal.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/shacal2.cpp /boost/test//boost_unit_test_framework/<link>static ]
 ;
 
 test-suite codec_tests :
 
-   [ run codec/base.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run codec/hex.cpp /boost/test//boost_unit_test_framework/<link>static]
+   [ run codec/base.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run codec/hex.cpp /boost/test//boost_unit_test_framework/<link>static ]
 ;
 
 test-suite hash_tests :
 
-   [ run hash/blake2b.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/keccak.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/md4.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/md5.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/pack.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/ripemd.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/sha.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/sha1.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/sha2.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/sha3.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/static_digest.cpp /boost/test//boost_unit_test_framework/<link>static]
-   [ run hash/tiger.cpp /boost/test//boost_unit_test_framework/<link>static]
+   [ run hash/blake2b.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/keccak.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/md4.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/md5.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/pack.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/ripemd.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha1.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha2.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha3.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/static_digest.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/tiger.cpp /boost/test//boost_unit_test_framework/<link>static ]
 ;
