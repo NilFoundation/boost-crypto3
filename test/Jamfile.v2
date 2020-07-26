@@ -16,39 +16,40 @@ path-constant here : . ;
 project : requirements
    <include>../include
    <include>../../..
-   <toolset>clang:<cxxflags>"-std=c++1y"
-   <toolset>darwin:<cxxflags>"-std=c++1y"
+   <toolset>clang:<cxxflags>-Wno-unused-variable  # warning: unused variable 'tolerance' [-Wunused-variable]
+   <toolset>clang:<cxxflags>-Wno-unknown-pragmas
+   <toolset>clang:<cxxflags>-Wno-reorder
 ;
 
 test-suite block_tests :
 
-   [ run block/kasumi.cpp ]
-   [ run block/md4.cpp ]
-   [ run block/md5.cpp ]
-   [ run block/pack.cpp ]
-   [ run block/rijndael.cpp ]
-   [ run block/shacal.cpp ]
-   [ run block/shacal2.cpp ]
+   [ run block/kasumi.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/md4.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/md5.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/pack.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/rijndael.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/shacal.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run block/shacal2.cpp /boost/test//boost_unit_test_framework/<link>static ]
 ;
 
 test-suite codec_tests :
 
-   [ run codec/base.cpp ]
-   [ run codec/hex.cpp ]
+   [ run codec/base.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run codec/hex.cpp /boost/test//boost_unit_test_framework/<link>static ]
 ;
 
 test-suite hash_tests :
 
-   [ run hash/blake2b.cpp ]
-   [ run hash/keccak.cpp ]
-   [ run hash/md4.cpp ]
-   [ run hash/md5.cpp ]
-   [ run hash/pack.cpp ]
-   [ run hash/ripemd.cpp ]
-   [ run hash/sha.cpp ]
-   [ run hash/sha1.cpp ]
-   [ run hash/sha2.cpp ]
-   [ run hash/sha3.cpp ]
-   [ run hash/static_digest.cpp ]
-   [ run hash/tiger.cpp ]
+   [ run hash/blake2b.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/keccak.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/md4.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/md5.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/pack.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/ripemd.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha1.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha2.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/sha3.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/static_digest.cpp /boost/test//boost_unit_test_framework/<link>static ]
+   [ run hash/tiger.cpp /boost/test//boost_unit_test_framework/<link>static ]
 ;

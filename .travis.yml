@@ -1,32 +1,9 @@
-# Copyright 2019-2020 Mikhail Komarov <nemo@nil.foundation>
-# Distributed under the Boost Software License, Version 1.0.
-# (See accompanying file LICENSE_1_0.txt or copy at http://boost.org/LICENSE_1_0.txt)
-#
-# This file should be used in couple of configurations:
-#
-# 1. Configuration for building at boostorg/multiprecision TravisCI.
-# This means no actual build with CMake should be performed, only configuration.
-#
-# 2. Configuration for building with less CI-loaded projects.
-# This means not only configuration with CMake should be performed, but also
-#  build and test should be executed.
-# To make this script be fine for building and testing with CMake, uncommend
-#  copy and paste following lines before the last 'fi' at 'script' section:
-#
 #------------------------------------------------------------------------------#
-#if [[ $TEST_SUITE == compile_fail ]]; then
-#  if [[ $TRAVIS_OS_NAME == linux ]]; then
-#    ctest --build-and-test .. . --build-generator "Unix Makefiles" --tests-regex "multiprecision_test_compile_fail_*" -j $(($(nproc) + 1));
-#  elif [[ $TRAVIS_OS_NAME == osx ]]; then
-#    ctest --build-and-test .. . --build-generator "Unix Makefiles" --tests-regex "multiprecision_test_compile_fail_*" -j $(($(sysctl -n hw.ncpu) + 1));
-#  fi
-#else
-#  if [[ $TRAVIS_OS_NAME == linux ]]; then
-#    cmake --build . --target multiprecision_test_suite_$TEST_SUITE -- -j$(($(nproc) + 1));
-#  elif [[ $TRAVIS_OS_NAME == osx ]]; then
-#    cmake --build . --target multiprecision_test_suite_$TEST_SUITE -- -j$(($(sysctl -n hw.ncpu) + 1));
-#  fi
-#fi
+# Copyright 2019-2020 Mikhail Komarov <nemo@nil.foundation>
+
+# Distributed under the Boost Software License, Version 1.0.
+# See accompanying file LICENSE_1_0.txt or copy
+# at http://boost.org/LICENSE_1_0.txt
 #------------------------------------------------------------------------------#
 
 language: cpp
@@ -62,7 +39,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -78,7 +54,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -94,7 +69,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -110,7 +84,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -126,7 +99,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -142,7 +114,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -158,7 +129,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -174,7 +144,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -190,7 +159,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -206,7 +174,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -222,7 +189,6 @@ matrix:
                 apt:
                     packages:
                         - g++-5
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -238,7 +204,6 @@ matrix:
                 apt:
                     packages:
                         - g++-5
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -254,7 +219,6 @@ matrix:
                 apt:
                     packages:
                         - g++-5
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -270,7 +234,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -286,7 +249,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -302,7 +264,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -318,7 +279,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -334,7 +294,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -350,7 +309,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -366,7 +324,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -382,7 +339,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -398,7 +354,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -414,7 +369,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -460,20 +414,38 @@ matrix:
             env: TOOLSET=clang COMPILER=clang++ CXXSTD=c++14 TEST_SUITE=hash_tests
             osx_image: xcode7.3
 
+before_install:
+    - if [[ $TRAVIS_OS_NAME == linux ]]; then
+        sudo apt-get install apt-transport-https ca-certificates gnupg software-properties-common wget;
+        sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main';
+        sudo apt-get update;
+        sudo apt-get install --allow-unauthenticated cmake;
+      elif [[ $TRAVIS_OS_NAME == osx ]]; then
+        brew update;
+        brew upgrade cmake;
+      fi;
+
 install:
     - cd ..
-    - git clone -b develop --depth 1 https://github.com/boostorg/boost.git boost-root;
-    - git clone -b 3-current-predefs --recurse-submodules https://github.com/nilfoundation/predef.git predef;
+    - git clone -b develop --recurse-submodules https://github.com/boostorg/boost.git boost-root
+    - git clone -b 3-current-predefs https://github.com/nilfoundation/predef.git predef
+    - git clone -b 2-malloc-function-attribute https://github.com/nilfoundation/config.git config
     - cd boost-root
     - git submodule update --init tools/build
     - git submodule update --init libs/config
     - git submodule update --init tools/boost_install
     - git submodule update --init libs/headers
     - git submodule update --init tools/boostdep
+    - python tools/boostdep/depinst/depinst.py multiprecision
+    - python tools/boostdep/depinst/depinst.py container
+    - python tools/boostdep/depinst/depinst.py predef
+    - python tools/boostdep/depinst/depinst.py config
+    - mkdir -p libs/crypto3
     - cp -r $TRAVIS_BUILD_DIR/* libs/crypto3
     - rm -rf libs/predef
-    - cp -r $TRAVIS_BUILD_DIR/predef libs/predef
-    - python tools/boostdep/depinst/depinst.py multiprecision container predef
+    - cp -r ../predef libs/predef
+    - rm -rf libs/config
+    - cp -r ../config libs/config
     - ./bootstrap.sh
     - ./b2 headers
 
@@ -482,9 +454,9 @@ script:
         echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
         proc=$(($(nproc) + 1));
-        elif [[ $TRAVIS_OS_NAME == osx ]]; then
+      elif [[ $TRAVIS_OS_NAME == osx ]]; then
         proc=$(($(sysctl -n hw.ncpu) + 1));
-        fi;
+      fi;
     - (cd libs/config/test && ../../../b2 config_info_travis_install toolset=$TOOLSET && ./config_info_travis);
     - (cd libs/crypto3/test && ../../../b2 -j$proc toolset=$TOOLSET $TEST_SUITE);
     - sudo ./b2 -j$proc install;
@@ -495,7 +467,7 @@ script:
     - if [[ $CXXSTD == c++1z ]]; then
         CXXSTD=c++17;
         fi;
-    - cmake -DBUILD_TESTS=TRUE -DCMAKE_CXX_STANDARD=$(echo $CXXSTD | sed 's/[^0-9]*//g')  ..;
+    - cmake -DBUILD_SHARED_LIBS=TRUE -DBUILD_TESTS=TRUE -DCMAKE_CXX_STANDARD=$(echo $CXXSTD | sed 's/[^0-9]*//g')  ..;
     - ctest -j$proc .;
 
 notifications:

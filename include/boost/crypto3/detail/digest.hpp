@@ -61,9 +61,6 @@ namespace boost {
                 boost::container::small_vector<octet_type, DigestBits / octet_bits>(sz, ot) {};
         };
 
-        // template<std::size_t DigestBits>
-        // using digest = boost::container::small_vector<octet_type, DigestBits / octet_bits>;
-
         namespace detail {
             template<std::size_t DigestBits, typename OutputIterator>
             OutputIterator to_ascii(const digest<DigestBits> &d, OutputIterator it) {
@@ -222,7 +219,7 @@ namespace boost {
             return source;
         }
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 namespace std {
     template<std::size_t DigestBits>

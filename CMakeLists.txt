@@ -49,9 +49,6 @@ define_target_platform_features(crypto3)
 check_sse()
 check_avx()
 
-configure_file(${CMAKE_CURRENT_LIST_DIR}/cmake/build.hpp.in
-               ${CMAKE_BINARY_DIR}/include/${CMAKE_WORKSPACE_NAME}/crypto3/build.hpp @ONLY)
-
 list(APPEND CMAKE_CURRENT_PROJECTS
      block
      codec
