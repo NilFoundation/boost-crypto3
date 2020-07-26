@@ -26,8 +26,6 @@ project : requirements
    <toolset>clang:<link>static # Clang-linux does not generate .dlls.
    <toolset>clang:<cxxflags>-Wno-unused-variable  # warning: unused variable 'tolerance' [-Wunused-variable]
    <toolset>clang:<cxxflags>-v
-   <toolset>clang:<cxxflags>"-std=c++1y"
-   <toolset>darwin:<cxxflags>"-std=c++1y"
 ;
 
 test-suite block_tests :
