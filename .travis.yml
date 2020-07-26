@@ -39,7 +39,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -55,7 +54,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -71,7 +69,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -87,7 +84,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -103,7 +99,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -119,7 +114,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -135,7 +129,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -151,7 +144,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -167,7 +159,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -183,7 +174,6 @@ matrix:
                 apt:
                     packages:
                         - g++-6
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -199,7 +189,6 @@ matrix:
                 apt:
                     packages:
                         - g++-5
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -215,7 +204,6 @@ matrix:
                 apt:
                     packages:
                         - g++-5
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -231,7 +219,6 @@ matrix:
                 apt:
                     packages:
                         - g++-5
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -247,7 +234,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -263,7 +249,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -279,7 +264,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -295,7 +279,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -311,7 +294,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -327,7 +309,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -343,7 +324,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -359,7 +339,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -375,7 +354,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -391,7 +369,6 @@ matrix:
                 apt:
                     packages:
                         - g++-8
-                        - cmake
                         - libgmp-dev
                         - libmpfr-dev
                         - libmpc-dev
@@ -439,8 +416,6 @@ matrix:
 
 before_install:
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
-        sudo apt-get update;
-        sudo apt-get purge cmake;
         sudo apt-get install apt-transport-https ca-certificates gnupg software-properties-common wget;
         sudo apt-add-repository 'deb https://apt.kitware.com/ubuntu/ xenial main';
         sudo apt-get update;

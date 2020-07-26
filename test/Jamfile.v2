@@ -16,6 +16,16 @@ path-constant here : . ;
 project : requirements
    <include>../include
    <include>../../..
+   <toolset>msvc:<runtime-link>static
+   <toolset>msvc:<link>static
+   <toolset>msvc:<warnings>all
+   <toolset>msvc:<cxxflags>/fp\:precise
+   <toolset>intel-win:<runtime-link>static
+   <toolset>intel-win:<link>static
+   <toolset>clang-win:<link>static  # Clang-win does not generate .dlls.
+   <toolset>clang:<link>static # Clang-linux does not generate .dlls.
+   <toolset>clang:<cxxflags>-Wno-unused-variable  # warning: unused variable 'tolerance' [-Wunused-variable]
+   <toolset>clang:<cxxflags>-v
    <toolset>clang:<cxxflags>"-std=c++1y"
    <toolset>darwin:<cxxflags>"-std=c++1y"
 ;
