@@ -41,7 +41,7 @@ namespace boost {
     }        // namespace test_tools
 }
 
-const char *test_data = "data/hex.json";
+const char *test_data = "codec/data/hex.json";
 
 boost::property_tree::ptree mode_data(const char *mode) {
     boost::property_tree::ptree root_data;
