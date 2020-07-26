@@ -16,6 +16,9 @@ path-constant here : . ;
 project : requirements
    <include>../include
    <include>../../..
+   <toolset>clang:<cxxflags>-Wno-unused-variable  # warning: unused variable 'tolerance' [-Wunused-variable]
+   <toolset>clang:<cxxflags>-Wno-unknown-pragmas
+   <toolset>clang:<cxxflags>-Wno-reorder
 ;
 
 test-suite block_tests :
