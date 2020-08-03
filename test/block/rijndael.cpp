@@ -195,7 +195,7 @@ inline bool operator!=(const byte_string &lhs, const byte_string &rhs) {
     return lhs.s_ != rhs.s_;
 }
 
-const char *test_data = "block/data/rijndael.json";
+const char *test_data = "data/rijndael.json";
 
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;

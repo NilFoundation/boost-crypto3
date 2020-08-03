@@ -49,7 +49,7 @@ public:
     }
 };
 
-const char *test_data = "hash/data/sha1.json";
+const char *test_data = "data/sha1.json";
 
 boost::property_tree::ptree string_data() {
     boost::property_tree::ptree string_data;

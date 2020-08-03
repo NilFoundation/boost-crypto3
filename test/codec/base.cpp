@@ -43,7 +43,7 @@ namespace boost {
     }        // namespace test_tools
 }    // namespace boost
 
-const char *test_data = "codec/data/base.json";
+const char *test_data = "data/base.json";
 
 boost::property_tree::ptree base_data(const char *child_name) {
     boost::property_tree::ptree root_data;
