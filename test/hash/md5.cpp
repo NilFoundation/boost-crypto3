@@ -48,7 +48,7 @@ public:
     }
 };
 
-const char *test_data = "data/md5.json";
+const char *test_data = "hash/data/md5.json";
 
 boost::property_tree::ptree string_data() {
     boost::property_tree::ptree string_data;

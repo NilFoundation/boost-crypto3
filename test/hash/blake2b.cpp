@@ -54,7 +54,7 @@ public:
     }
 };
 
-const char *test_data = "data/blake2b.json";
+const char *test_data = "hash/data/blake2b.json";
 
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;
