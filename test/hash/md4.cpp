@@ -48,7 +48,11 @@ public:
     }
 };
 
-const char *test_data = "hash/data/md4.json";
+const char *construct_file(const char *path) {
+    return (boost::filesystem::path(path).parent_path() / "data" / "md4.json").c_str();
+}
+
+const char *test_data = construct_file(BOOST_PP_STRINGIZE(__FILE__));
 
 boost::property_tree::ptree string_data() {
     boost::property_tree::ptree string_data;

@@ -20,6 +20,8 @@
 #include <boost/test/unit_test.hpp>
 #include <boost/test/data/test_case.hpp>
 
+#include <boost/filesystem/path.hpp>
+
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
@@ -43,7 +45,11 @@ namespace boost {
     }        // namespace test_tools
 }    // namespace boost
 
-const char *test_data = "codec/data/base.json";
+const char *construct_file(const char *path) {
+    return (boost::filesystem::path(path).parent_path() / "data" / "base.json").c_str();
+}
+
+const char *test_data = construct_file(BOOST_PP_STRINGIZE(__FILE__));
 
 boost::property_tree::ptree base_data(const char *child_name) {
     boost::property_tree::ptree root_data;

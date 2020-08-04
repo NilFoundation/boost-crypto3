@@ -15,6 +15,8 @@
 #include <boost/test/data/test_case.hpp>
 #include <boost/test/data/monomorphic.hpp>
 
+#include <boost/filesystem/path.hpp>
+
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 
@@ -53,7 +55,11 @@ public:
     }
 };
 
-const char *test_data = "hash/data/sha3.json";
+const char *construct_file(const char *path) {
+    return (boost::filesystem::path(path).parent_path() / "data" / "sha3.json").c_str();
+}
+
+const char *test_data = construct_file(BOOST_PP_STRINGIZE(__FILE__));
 
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;
