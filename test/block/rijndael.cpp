@@ -197,14 +197,10 @@ inline bool operator!=(const byte_string &lhs, const byte_string &rhs) {
     return lhs.s_ != rhs.s_;
 }
 
-const char *construct_file(const char *path) {
-    return (boost::filesystem::path(path).parent_path() / "data" / "rijndael.json").c_str();
-}
-
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;
-    std::cout << construct_file(BOOST_PP_STRINGIZE(__FILE__)) << std::endl;
-    boost::property_tree::read_json(construct_file(BOOST_PP_STRINGIZE(__FILE__)), root_data);
+    boost::property_tree::read_json((boost::filesystem::path(BOOST_PP_STRINGIZE(__FILE__)).parent_path() / "data" /
+"rijndael.json").string(), root_data);
     return root_data.get_child(child_name);
 }
 
