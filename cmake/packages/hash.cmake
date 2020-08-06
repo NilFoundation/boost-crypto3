@@ -16,8 +16,8 @@ cm_find_package(CM)
 include(CMDeploy)
 include(CMSetupVersion)
 
-if(NOT Boost_FOUND)
-    cm_find_package(Boost REQUIRED)
+if(NOT Boost_CONTAINER_FOUND OR NOT Boost_FOUND)
+    cm_find_package(Boost REQUIRED COMPONENTS container)
 endif()
 
 cm_find_package(${CMAKE_WORKSPACE_NAME}_block)

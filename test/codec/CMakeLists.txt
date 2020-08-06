@@ -8,7 +8,7 @@
 
 include(CMTest)
 
-if(NOT Boost_UNIT_TEST_FRAMEWORK_FOUND)
+if(NOT Boost_UNIT_TEST_FRAMEWORK_FOUND OR NOT Boost_FILESYSTEM_FOUND)
     cm_find_package(Boost REQUIRED COMPONENTS filesystem unit_test_framework)
 endif()
 

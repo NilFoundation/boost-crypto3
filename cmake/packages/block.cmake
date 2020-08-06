@@ -60,7 +60,7 @@ check_sse()
 check_avx()
 
 if(NOT Boost_CONTAINER_FOUND OR NOT Boost_FOUND)
-    cm_find_package(Boost COMPONENTS container)
+    cm_find_package(Boost REQUIRED COMPONENTS container)
 endif()
 
 list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS

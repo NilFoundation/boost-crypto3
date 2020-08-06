@@ -12,10 +12,8 @@ macro(cm_find_package NAME)
     endif()
 endmacro()
 
-if(NOT Boost_FOUND AND NOT BUILD_TESTS)
+if(NOT Boost_CONTAINER_FOUND OR NOT Boost_FOUND)
     cm_find_package(Boost REQUIRED COMPONENTS container)
-else()
-    cm_find_package(Boost REQUIRED COMPONENTS container unit_test_framework)
 endif()
 
 option(BUILD_WITH_CCACHE "Build with ccache usage" TRUE)
