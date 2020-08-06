@@ -55,11 +55,9 @@ const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() / "data" / "sha.json").c_str();
 }
 
-const char *test_data = construct_file(BOOST_PP_STRINGIZE(__FILE__));
-
 boost::property_tree::ptree string_data() {
     boost::property_tree::ptree string_data;
-    boost::property_tree::read_json(test_data, string_data);
+    boost::property_tree::read_json(construct_file(BOOST_PP_STRINGIZE(__FILE__)), string_data);
 
     return string_data;
 }

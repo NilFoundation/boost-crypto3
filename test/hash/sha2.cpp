@@ -59,14 +59,11 @@ const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() / "data" / "sha2.json").c_str();
 }
 
-const char *test_data = construct_file(BOOST_PP_STRINGIZE(__FILE__));
-
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;
-    boost::property_tree::read_json(test_data, root_data);
-    boost::property_tree::ptree string_data = root_data.get_child(child_name);
+    boost::property_tree::read_json(construct_file(BOOST_PP_STRINGIZE(__FILE__)), root_data);
 
-    return string_data;
+    return root_data.get_child(child_name);
 }
 
 BOOST_AUTO_TEST_SUITE(sha2_stream_processor_data_driven_algorithm_test_suite)

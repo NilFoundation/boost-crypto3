@@ -427,7 +427,6 @@ before_install:
         brew update;
         brew upgrade cmake;
       fi;
-    - ls /home/travis/build/NilFoundation/boost-crypto3/test/block/data/
 
 install:
     - cd ..
