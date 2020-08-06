@@ -198,7 +198,6 @@ inline bool operator!=(const byte_string &lhs, const byte_string &rhs) {
 }
 
 const char *construct_file(const char *path) {
-    std::cout << (boost::filesystem::path(path).parent_path() / "data" / "rijndael.json").c_str() << std::endl;
     return (boost::filesystem::path(path).parent_path() / "data" / "rijndael.json").c_str();
 }
 
