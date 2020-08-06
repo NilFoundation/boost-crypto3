@@ -204,7 +204,7 @@ const char *construct_file(const char *path) {
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;
     boost::property_tree::read_json(construct_file(BOOST_PP_STRINGIZE(__FILE__)), root_data);
-    std::cout << construct_file(BOOST_PP_STRINGIZE(__FILE__) << std::endl;
+    std::cout << construct_file(BOOST_PP_STRINGIZE(__FILE__)) << std::endl;
     return root_data.get_child(child_name);
 }
 
