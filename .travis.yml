@@ -470,7 +470,8 @@ script:
     - if [[ $CXXSTD == c++1z ]]; then
         CXXSTD=c++17;
         fi;
-    - cmake -DBUILD_SHARED_LIBS=TRUE -DBUILD_TESTS=TRUE -DCMAKE_CXX_STANDARD=$(echo $CXXSTD | sed 's/[^0-9]*//g')  ..;
+    - cmake -DBUILD_SHARED_LIBS=TRUE -DBUILD_TESTS=TRUE -DBUILD_WITH_CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED=TRUE -DCMAKE_CXX_STANDARD=$(echo $CXXSTD | sed 's/[^0-9]*//g')
+        ..;
     - make -j$proc check;
 
 notifications:

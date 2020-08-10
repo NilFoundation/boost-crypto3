@@ -26,6 +26,8 @@
 #include <boost/crypto3/codec/algorithm/encode.hpp>
 #include <boost/crypto3/codec/algorithm/decode.hpp>
 
+#include <boost/crypto3/codec/adaptor/coded.hpp>
+
 #include <boost/crypto3/codec/hex.hpp>
 
 using namespace boost::crypto3;
@@ -42,6 +44,8 @@ namespace boost {
         }    // namespace tt_detail
     }        // namespace test_tools
 }
+
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
 
 const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() / "data" / "hex.json").c_str();
@@ -146,6 +150,7 @@ BOOST_DATA_TEST_CASE(hex_lower_iterator_iterator_decode, mode_data("lower_mode")
 
 BOOST_AUTO_TEST_SUITE_END()
 
+#endif
 
 template<std::size_t Size, typename Integer>
 static inline typename boost::uint_t<Size>::exact extract_uint_t(Integer v, std::size_t position) {
@@ -189,22 +194,18 @@ BOOST_DATA_TEST_CASE(hex_lower_single_range_random_encode_decode,
 
 BOOST_AUTO_TEST_SUITE_END()
 
-// BOOST_AUTO_TEST_SUITE(hex_codec_adaptor_test_suite)
-//
-//    BOOST_DATA_TEST_CASE(hex_upper_range_encode, mode_data("upper_mode"), array_element) {
-//        typedef hex<mode::upper> Codec;
-//        typedef typename range_compressor_traits<typename Codec::stream_encoder_type,
-//                decltype(array_element.first)>::type CompressorState;
-//
-//        BOOST_CHECK_EQUAL((array_element.first | adaptors::encoded<Codec, CompressorState>()), array_element.second.data());
-//    }
-//
-//    BOOST_DATA_TEST_CASE(hex_upper_range_decode, mode_data("upper_mode"), array_element) {
-//        typedef hex<mode::upper> Codec;
-//        typedef typename range_compressor_traits<typename Codec::stream_encoder_type,
-//                decltype(array_element.first)>::type CompressorState;
-//
-//        BOOST_CHECK_EQUAL((array_element.second.data() | adaptors::decoded<Codec, CompressorState>()), array_element.first);
-//    }
-//
-// BOOST_AUTO_TEST_SUITE_END()
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
+
+BOOST_AUTO_TEST_SUITE(hex_codec_adaptor_test_suite)
+
+   BOOST_DATA_TEST_CASE(hex_upper_range_encode, mode_data("upper_mode"), array_element) {
+       BOOST_CHECK_EQUAL((array_element.first | adaptors::encoded<codec::hex>), array_element.second.data());
+   }
+
+   BOOST_DATA_TEST_CASE(hex_upper_range_decode, mode_data("upper_mode"), array_element) {
+       BOOST_CHECK_EQUAL((array_element.second.data() | adaptors::decoded<codec::hex>), array_element.first);
+   }
+
+BOOST_AUTO_TEST_SUITE_END()
+
+#endif

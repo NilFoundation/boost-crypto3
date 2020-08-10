@@ -43,8 +43,7 @@ set(TESTS_NAMES
     "md4"
     "md5"
     "shacal"
-    "shacal2"
-    )
+    "shacal2")
 
 foreach(TEST_NAME ${TESTS_NAMES})
     define_block_cipher_test(${TEST_NAME})

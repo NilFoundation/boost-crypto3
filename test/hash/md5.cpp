@@ -50,6 +50,8 @@ public:
     }
 };
 
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
+
 const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() / "data" / "md5.json").c_str();
 }
@@ -86,6 +88,8 @@ BOOST_DATA_TEST_CASE(md5_string_various_range_value_hash, string_data(), array_e
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+#endif
 
 BOOST_AUTO_TEST_SUITE(md5_stream_processor_test_suite)
 

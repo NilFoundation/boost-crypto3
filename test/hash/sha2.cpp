@@ -55,6 +55,8 @@ public:
     }
 };
 
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
+
 const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() / "data" / "sha2.json").c_str();
 }
@@ -121,6 +123,8 @@ BOOST_DATA_TEST_CASE(sha2_512_range_hash, string_data("data_512"), array_element
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+#endif
 
 BOOST_AUTO_TEST_SUITE(sha2_stream_processor_test_suite)
 

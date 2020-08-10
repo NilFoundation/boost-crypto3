@@ -56,6 +56,8 @@ public:
     }
 };
 
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
+
 const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() /  "data" / "blake2b.json").c_str();
 }
@@ -146,6 +148,8 @@ BOOST_DATA_TEST_CASE(blake2b_512_string_various_range_value_hash, string_data("d
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+#endif
 
 BOOST_AUTO_TEST_SUITE(blake2b_stream_processor_test_suite)
 

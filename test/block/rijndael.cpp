@@ -197,12 +197,16 @@ inline bool operator!=(const byte_string &lhs, const byte_string &rhs) {
     return lhs.s_ != rhs.s_;
 }
 
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
+
 boost::property_tree::ptree string_data(const char *child_name) {
     boost::property_tree::ptree root_data;
     boost::property_tree::read_json((boost::filesystem::path(BOOST_PP_STRINGIZE(__FILE__)).parent_path() / "data" /
 "rijndael.json").string(), root_data);
     return root_data.get_child(child_name);
 }
+
+#endif
 
 BOOST_AUTO_TEST_SUITE(rijndael_stream_processor_data_driven_test_suite)
 
@@ -227,6 +231,8 @@ BOOST_AUTO_TEST_CASE(rijndael_128_128_2) {
     
     BOOST_CHECK_EQUAL(out, "69c4e0d86a7b0430d8cdb78070b4c55a");
 }
+
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
 
 BOOST_DATA_TEST_CASE(rijndael_128_128, string_data("key_128_block_128"), triples) {
 
@@ -294,6 +300,8 @@ BOOST_DATA_TEST_CASE(rijndael_256_128, string_data("key_256_block_128"), triples
         BOOST_CHECK_EQUAL(out, pair.second.data());
     }
 }
+
+#endif
 
 BOOST_AUTO_TEST_SUITE_END()
 

@@ -32,7 +32,12 @@ macro(cm_find_package NAME)
 endmacro()
 
 option(BUILD_WITH_CCACHE "Build with ccache usage" TRUE)
+option(BUILD_WITH_CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED "Build with disabling data-driven tests" FALSE)
 option(BUILD_TESTS "Build unit tests" FALSE)
+
+if(BUILD_WITH_CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED)
+    add_definitions(-DCRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED)
+endif()
 
 set(BUILD_WITH_TARGET_ARCHITECTURE "" CACHE STRING "Target build architecture")
 

@@ -55,6 +55,8 @@ public:
     }
 };
 
+#ifndef CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED
+
 const char *construct_file(const char *path) {
     return (boost::filesystem::path(path).parent_path() / "data" / "ripemd.json").c_str();
 }
@@ -169,6 +171,8 @@ BOOST_DATA_TEST_CASE(ripemd_320_typedef_range_hash, string_data("data_320"), arr
 }
 
 BOOST_AUTO_TEST_SUITE_END()
+
+#endif
 
 BOOST_AUTO_TEST_SUITE(ripemd_stream_processor_test_suite)
 
