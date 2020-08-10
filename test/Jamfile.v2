@@ -23,7 +23,7 @@ project : requirements
 
 test-suite block_tests :
 
-   [ run block/kasumi.cpp /boost/test//boost_unit_test_framework/<link>static /boost/filesystem//boost_filesystem/<link>static]
+   [ run block/kasumi.cpp /boost/test//boost_unit_test_framework/<link>static /boost/filesystem//boost_filesystem/<link>static ]
    [ run block/md4.cpp /boost/test//boost_unit_test_framework/<link>static
    /boost/filesystem//boost_filesystem/<link>static
       : # command line
