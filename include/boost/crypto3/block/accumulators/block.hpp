@@ -62,7 +62,7 @@ namespace boost {
 
                     template<typename Args>
                     block_impl(const Args &args) :
-                        total_seen(0), filled(false), mode(args[boost::accumulators::sample]) {
+                        mode(args[boost::accumulators::sample]), filled(false), total_seen(0) {
                     }
 
                     template<typename ArgumentPack>

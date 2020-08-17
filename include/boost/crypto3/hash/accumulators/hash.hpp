@@ -66,7 +66,7 @@ namespace boost {
                     typedef typename hash_type::digest_type result_type;
 
                     // The constructor takes an argument pack.
-                    hash_impl(boost::accumulators::dont_care) : total_seen(0), filled(false) {
+                    hash_impl(boost::accumulators::dont_care) : filled(false), total_seen(0) {
                     }
 
                     template<typename ArgumentPack>
