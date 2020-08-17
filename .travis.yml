@@ -454,14 +454,14 @@ install:
 
 script:
     - |-
-        echo "using $TOOLSET : : $COMPILER : : <define>CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
+        echo "using $TOOLSET : : $COMPILER : <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
         proc=$(($(nproc) + 1));
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
         proc=$(($(sysctl -n hw.ncpu) + 1));
       fi;
     - (cd libs/config/test && ../../../b2 config_info_travis_install toolset=$TOOLSET && ./config_info_travis);
-    - (cd libs/crypto3/test && ../../../b2 -j$proc toolset=$TOOLSET $TEST_SUITE);
+    - (cd libs/crypto3/test && ../../../b2 -j$proc define=CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED toolset=$TOOLSET $TEST_SUITE);
     - sudo ./b2 -j$proc install;
     - cd $TRAVIS_BUILD_DIR && mkdir cmake-build && cd cmake-build;
     - if [[ $(echo $CXXSTD | sed 's/[^0-9]*//g') == 03 ]]; then
