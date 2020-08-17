@@ -454,8 +454,7 @@ install:
 
 script:
     - |-
-        echo "using $TOOLSET : : $COMPILER : : <define>CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED<cxxflags>-std=$CXXSTD ;"
-        > ~/user-config.jam
+        echo "using $TOOLSET : : $COMPILER : : <define>CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED <cxxflags>-std=$CXXSTD ;" > ~/user-config.jam
     - if [[ $TRAVIS_OS_NAME == linux ]]; then
         proc=$(($(nproc) + 1));
       elif [[ $TRAVIS_OS_NAME == osx ]]; then
