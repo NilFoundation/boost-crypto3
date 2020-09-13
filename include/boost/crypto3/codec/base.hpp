@@ -401,6 +401,6 @@ namespace boost {
             typedef base<64> base64;
         }    // namespace codec
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

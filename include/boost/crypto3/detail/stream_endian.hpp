@@ -51,6 +51,6 @@ namespace boost {
 
         }    // namespace stream_endian
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_STREAM_ENDIAN_HPP

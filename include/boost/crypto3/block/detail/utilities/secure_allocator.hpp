@@ -83,6 +83,6 @@ namespace boost {
             return false;
         }
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_SECURE_ALLOCATOR_HPP

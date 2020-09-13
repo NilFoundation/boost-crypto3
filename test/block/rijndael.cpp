@@ -30,8 +30,6 @@
 #include <boost/crypto3/block/aes.hpp>
 #include <boost/crypto3/block/rijndael.hpp>
 
-#include <boost/crypto3/block/detail/key_value.hpp>
-
 using namespace boost::crypto3;
 using namespace boost::crypto3::block;
 using namespace boost::crypto3::detail;

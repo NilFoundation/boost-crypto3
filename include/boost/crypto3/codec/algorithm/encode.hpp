@@ -200,6 +200,6 @@ namespace boost {
             return EncoderImpl(r, CodecAccumulator());
         }
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

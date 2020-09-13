@@ -70,6 +70,6 @@ namespace boost {
 
         }    // namespace hashes
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_HASH_MD5_HPP

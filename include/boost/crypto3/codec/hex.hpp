@@ -210,6 +210,6 @@ namespace boost {
             };
         }    // namespace codec
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

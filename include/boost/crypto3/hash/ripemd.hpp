@@ -309,6 +309,6 @@ namespace boost {
             typedef ripemd<320> ripemd320;
         }    // namespace hashes
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

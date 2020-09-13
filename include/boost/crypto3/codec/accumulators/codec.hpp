@@ -262,6 +262,6 @@ namespace boost {
             }    // namespace extract
         }        // namespace accumulators
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_ACCUMULATORS_CODEC_HPP

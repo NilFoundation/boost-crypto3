@@ -62,7 +62,7 @@ namespace boost {
 
                     template<typename Args>
                     block_impl(const Args &args) :
-                        mode(args[boost::accumulators::sample]), filled(false), total_seen(0) {
+                        total_seen(0), filled(false), mode(args[boost::accumulators::sample]) {
                     }
 
                     template<typename ArgumentPack>
@@ -246,6 +246,6 @@ namespace boost {
             }    // namespace extract
         }        // namespace accumulators
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_ACCUMULATORS_BLOCK_HPP

@@ -397,6 +397,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace codec
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_BASE_POLICY_HPP

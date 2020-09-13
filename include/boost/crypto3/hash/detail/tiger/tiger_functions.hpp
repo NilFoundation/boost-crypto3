@@ -140,6 +140,6 @@ namespace boost {
             }   // namespace detail
         }   // namespace hashes
     }   // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_TIGER_FUNCTIONS_HPP

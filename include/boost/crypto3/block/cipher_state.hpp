@@ -35,6 +35,6 @@ namespace boost {
                 boost::accumulators::features<accumulators::tag::block<ProcessingMode>>, std::size_t>;
         }    // namespace block
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_BLOCK_CIPHER_STATE_HPP

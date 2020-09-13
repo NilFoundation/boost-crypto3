@@ -42,6 +42,6 @@ namespace boost {
          * @brief Algorithms are meant to provide encryption interface similar to STL algorithms' one.
          */
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_BLOCK_HPP

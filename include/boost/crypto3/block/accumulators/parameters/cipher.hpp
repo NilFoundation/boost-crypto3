@@ -19,6 +19,6 @@ namespace boost {
             BOOST_ACCUMULATORS_IGNORE_GLOBAL(cipher)
         }    // namespace accumulators
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_BITS_HPP

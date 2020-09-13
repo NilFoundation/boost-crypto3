@@ -54,6 +54,6 @@ namespace boost {
             return make_array(first, detail::BuildIndices<N> {});
         }
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_MAKE_ARRAY_HPP

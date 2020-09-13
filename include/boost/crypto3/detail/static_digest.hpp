@@ -75,7 +75,7 @@ namespace boost {
             }
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 namespace std {
     template<std::size_t DigestBits>
@@ -207,6 +207,6 @@ namespace boost {
             return source;
         }
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_HASH_DIGEST_HPP

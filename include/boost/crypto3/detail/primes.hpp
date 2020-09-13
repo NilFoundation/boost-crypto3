@@ -6,8 +6,8 @@
 // http://www.boost.org/LICENSE_1_0.txt
 //---------------------------------------------------------------------------//
 
-#ifndef CRYPTO3_HASH_DETAIL_PRIMES_HPP
-#define CRYPTO3_HASH_DETAIL_PRIMES_HPP
+#ifndef CRYPTO3_DETAIL_PRIMES_HPP
+#define CRYPTO3_DETAIL_PRIMES_HPP
 
 #include <boost/integer.hpp>
 
@@ -73,6 +73,6 @@ namespace boost {
 
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_HASH_DETAIL_PRIMES_HPP

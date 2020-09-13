@@ -24,6 +24,6 @@ namespace boost {
                                                  boost::accumulators::features<accumulators::tag::hash<Hash>>,
                                                  std::size_t>;
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_BLOCK_STREAM_PREPROCESSOR_HPP

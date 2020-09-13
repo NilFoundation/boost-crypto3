@@ -70,6 +70,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace hashes
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_SHA3_FINALIZER_HPP

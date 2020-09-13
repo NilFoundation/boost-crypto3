@@ -21,6 +21,6 @@ namespace boost {
             using aes = rijndael<KeyBits, 128>;
         }    // namespace block
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_AES_HPP

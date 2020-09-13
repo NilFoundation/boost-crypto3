@@ -13,10 +13,9 @@
 
 #include <wmmintrin.h>
 
-#include <boost/config.hpp>
-
 #include <boost/crypto3/detail/make_uint_t.hpp>
 #include <boost/crypto3/detail/pack.hpp>
+#include <boost/crypto3/detail/config.hpp>
 
 namespace boost {
     namespace crypto3 {
@@ -574,6 +573,6 @@ namespace boost {
              */
         }    // namespace block
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_RIJNDAEL_NI_IMPL_HPP

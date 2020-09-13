@@ -51,6 +51,6 @@ namespace boost {
                 boost::accumulators::features<accumulators::tag::codec<ProcessingMode>>, std::size_t>;
         }    // namespace codec
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_CODEC_STATE_HPP

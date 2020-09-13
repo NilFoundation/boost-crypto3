@@ -126,6 +126,6 @@ namespace boost {
             }    // namespace modes
         }        // namespace block
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_CIPHER_MODES_HPP

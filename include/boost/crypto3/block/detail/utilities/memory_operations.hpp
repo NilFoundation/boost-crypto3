@@ -308,6 +308,6 @@ namespace boost {
             return out;
         }
     }    // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif

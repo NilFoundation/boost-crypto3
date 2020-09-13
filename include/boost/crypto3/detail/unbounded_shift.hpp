@@ -87,6 +87,6 @@ namespace boost {
             }
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_HASH_DETAIL_UNBOUNDED_SHIFT_HPP

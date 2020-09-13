@@ -17,10 +17,10 @@
 #include <boost/integer.hpp>
 #include <boost/static_assert.hpp>
 #include <boost/endian/conversion.hpp>
-#include <boost/predef/architecture.h>
 
 #include <boost/crypto3/detail/unbounded_shift.hpp>
 #include <boost/crypto3/detail/stream_endian.hpp>
+#include <boost/crypto3/detail/predef.hpp>
 
 namespace boost {
     namespace crypto3 {
@@ -496,6 +496,6 @@ namespace boost {
             };
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_DETAIL_REVERSER_HPP

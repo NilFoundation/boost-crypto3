@@ -292,6 +292,6 @@ namespace boost {
             };
         }    // namespace detail
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_TYPE_TRAITS_HPP

@@ -186,6 +186,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace codec
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_CODEC_VALUE_HPP

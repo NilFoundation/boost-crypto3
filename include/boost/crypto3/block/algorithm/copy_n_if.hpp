@@ -39,6 +39,6 @@ namespace boost {
             }
         }    // namespace block
     }        // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_COPY_N_IF_HPP

@@ -63,6 +63,6 @@ namespace boost {
             }    // namespace detail
         }        // namespace block
     }            // namespace crypto3
-}    // namespace nil
+}    // namespace boost
 
 #endif    // CRYPTO3_BLOCK_CIPHERS_DETAIL_MD5_POLICY_HPP
