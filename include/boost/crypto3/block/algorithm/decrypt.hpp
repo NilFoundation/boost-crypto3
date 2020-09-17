@@ -24,7 +24,7 @@ namespace boost {
     namespace crypto3 {
         namespace block {
             template<typename BlockCipher>
-            using decryption_policy = typename modes::isomorphic<BlockCipher, nop_padding>::decryption_policy;
+            using decryption_policy = typename block::modes::isomorphic<BlockCipher, nop_padding>::decryption_policy;
         }
 
         /*!
@@ -45,7 +45,8 @@ namespace boost {
          *
          * @return
          */
-        template<typename BlockCipher, typename InputIterator, typename KeyInputIterator, typename OutputIterator>
+        template<typename BlockCipher, typename InputIterator, typename KeyInputIterator, typename OutputIterator,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         OutputIterator decrypt(InputIterator first, InputIterator last, KeyInputIterator key_first,
                                KeyInputIterator key_last, OutputIterator out) {
 
@@ -78,7 +79,8 @@ namespace boost {
          *
          * @return
          */
-        template<typename BlockCipher, typename InputIterator, typename KeySinglePassRange, typename OutputIterator>
+        template<typename BlockCipher, typename InputIterator, typename KeySinglePassRange, typename OutputIterator,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         OutputIterator decrypt(InputIterator first, InputIterator last, const KeySinglePassRange &key,
                                OutputIterator out) {
 
@@ -102,13 +104,16 @@ namespace boost {
          * @tparam BlockCipher
          * @tparam InputIterator
          * @tparam OutputIterator
+         *
          * @param first
          * @param last
          * @param key
          * @param out
+         *
          * @return
          */
-        template<typename BlockCipher, typename InputIterator, typename OutputIterator>
+        template<typename BlockCipher, typename InputIterator, typename OutputIterator,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         OutputIterator decrypt(InputIterator first, InputIterator last, const block::cipher_key<BlockCipher> &key,
                                OutputIterator out) {
 
@@ -139,7 +144,8 @@ namespace boost {
          */
         template<typename BlockCipher, typename InputIterator,
                  typename OutputAccumulator = typename block::accumulator_set<typename block::modes::isomorphic<
-                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>>
+                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         typename std::enable_if<boost::accumulators::detail::is_accumulator_set<OutputAccumulator>::value,
                                 OutputAccumulator>::type &
             decrypt(InputIterator first, InputIterator last, OutputAccumulator &acc) {
@@ -168,7 +174,8 @@ namespace boost {
         template<typename BlockCipher, typename SinglePassRange,
                  typename OutputAccumulator = typename block::accumulator_set<
                      typename block::modes::isomorphic<BlockCipher, block::nop_padding>::template bind<
-                         typename block::modes::isomorphic<BlockCipher, block::nop_padding>::decryption_policy>::type>>
+                         typename block::modes::isomorphic<BlockCipher, block::nop_padding>::decryption_policy>::type>,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         typename std::enable_if<boost::accumulators::detail::is_accumulator_set<OutputAccumulator>::value,
                                 OutputAccumulator>::type &
             decrypt(const SinglePassRange &r, OutputAccumulator &acc) {
@@ -198,7 +205,8 @@ namespace boost {
          */
         template<typename BlockCipher, typename InputIterator, typename KeyInputIterator,
                  typename CipherAccumulator = typename block::accumulator_set<typename block::modes::isomorphic<
-                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>>
+                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         block::detail::range_cipher_impl<block::detail::value_cipher_impl<CipherAccumulator>>
             decrypt(InputIterator first, InputIterator last, KeyInputIterator key_first, KeyInputIterator key_last) {
 
@@ -229,7 +237,8 @@ namespace boost {
          */
         template<typename BlockCipher, typename InputIterator, typename KeySinglePassRange,
                  typename CipherAccumulator = typename block::accumulator_set<typename block::modes::isomorphic<
-                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>>
+                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         block::detail::range_cipher_impl<block::detail::value_cipher_impl<CipherAccumulator>>
             decrypt(InputIterator first, InputIterator last, const KeySinglePassRange &key) {
 
@@ -258,7 +267,8 @@ namespace boost {
          */
         template<typename BlockCipher, typename InputIterator,
                  typename CipherAccumulator = typename block::accumulator_set<typename block::modes::isomorphic<
-                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>>
+                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>,
+                 typename = typename std::enable_if<detail::is_iterator<InputIterator>::value>::type>
         block::detail::range_cipher_impl<block::detail::value_cipher_impl<CipherAccumulator>>
             decrypt(InputIterator first, InputIterator last, const block::cipher_key<BlockCipher> &key) {
 
@@ -287,7 +297,8 @@ namespace boost {
          *
          * @return
          */
-        template<typename BlockCipher, typename SinglePassRange, typename KeySinglePassRange, typename OutputIterator>
+        template<typename BlockCipher, typename SinglePassRange, typename KeySinglePassRange, typename OutputIterator,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         OutputIterator decrypt(const SinglePassRange &rng, const KeySinglePassRange &key, OutputIterator out) {
 
             typedef typename block::modes::isomorphic<BlockCipher, block::nop_padding>::template bind<
@@ -310,12 +321,14 @@ namespace boost {
          * @tparam BlockCipher
          * @tparam SinglePassRange
          * @tparam OutputIterator
+         *
          * @param rng
          * @param key
          * @param out
          * @return
          */
-        template<typename BlockCipher, typename SinglePassRange, typename OutputIterator>
+        template<typename BlockCipher, typename SinglePassRange, typename OutputIterator,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         OutputIterator decrypt(const SinglePassRange &rng, const block::cipher_key<BlockCipher> &key,
                                OutputIterator out) {
 
@@ -343,7 +356,8 @@ namespace boost {
          *
          * @return
          */
-        template<typename BlockCipher, typename SinglePassRange, typename KeySinglePassRange, typename OutputRange>
+        template<typename BlockCipher, typename SinglePassRange, typename KeySinglePassRange, typename OutputRange,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         OutputRange &decrypt(const SinglePassRange &rng, const KeySinglePassRange &key, OutputRange &out) {
 
             typedef typename block::modes::isomorphic<BlockCipher, block::nop_padding>::template bind<
@@ -371,7 +385,8 @@ namespace boost {
          * @param out
          * @return
          */
-        template<typename BlockCipher, typename SinglePassRange, typename OutputRange>
+        template<typename BlockCipher, typename SinglePassRange, typename OutputRange,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         OutputRange &decrypt(const SinglePassRange &rng, const block::cipher_key<BlockCipher> &key, OutputRange &out) {
 
             typedef typename block::modes::isomorphic<BlockCipher, block::nop_padding>::template bind<
@@ -401,7 +416,8 @@ namespace boost {
          */
         template<typename BlockCipher, typename SinglePassRange, typename KeySinglePassRange,
                  typename CipherAccumulator = typename block::accumulator_set<typename block::modes::isomorphic<
-                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>>
+                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         block::detail::range_cipher_impl<block::detail::value_cipher_impl<CipherAccumulator>>
             decrypt(const SinglePassRange &r, const KeySinglePassRange &key) {
 
@@ -429,7 +445,8 @@ namespace boost {
          */
         template<typename BlockCipher, typename SinglePassRange,
                  typename CipherAccumulator = typename block::accumulator_set<typename block::modes::isomorphic<
-                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>>
+                     BlockCipher, block::nop_padding>::template bind<block::decryption_policy<BlockCipher>>::type>,
+                 typename = typename std::enable_if<detail::is_range<SinglePassRange>::value>::type>
         block::detail::range_cipher_impl<block::detail::value_cipher_impl<CipherAccumulator>>
             decrypt(const SinglePassRange &r, const block::cipher_key<BlockCipher> &key) {
 

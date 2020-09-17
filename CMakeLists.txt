@@ -34,6 +34,7 @@ endmacro()
 option(BUILD_WITH_CCACHE "Build with ccache usage" TRUE)
 option(BUILD_WITH_CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED "Build with disabling data-driven tests" FALSE)
 option(BUILD_TESTS "Build unit tests" FALSE)
+option(BUILD_EXAMPLES "Build examples" FALSE)
 
 if(BUILD_WITH_CRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED)
     add_definitions(-DCRYPTO3_CI_DATA_DRIVEN_TESTS_DISABLED)
@@ -65,4 +66,8 @@ endforeach()
 
 if(BUILD_TESTS)
     add_subdirectories(test)
+endif()
+
+if(BUILD_EXAMPLES)
+    add_subdirectories(example)
 endif()
