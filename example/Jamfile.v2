@@ -1,0 +1,24 @@
+#---------------------------------------------------------------------------#
+# Copyright (c) 2020 Mikhail Komarov <nemo@nil.foundation>
+#
+# Distributed under the Boost Software License, Version 1.0
+# See accompanying file LICENSE_1_0.txt or copy at
+# http://www.boost.org/LICENSE_1_0.txt
+#---------------------------------------------------------------------------#
+
+import testing ;
+import modules ;
+import path ;
+import ../../config/checks/config : requires ;
+
+path-constant here : . ;
+
+project : requirements
+   <include>../include
+   <include>../../..
+   <toolset>clang:<cxxflags>-Wno-unused-variable  # warning: unused variable 'tolerance' [-Wunused-variable]
+   <toolset>clang:<cxxflags>-Wno-unknown-pragmas
+   <toolset>clang:<cxxflags>-Wno-reorder
+;
+
+[ run encrypt.cpp /boost/test//boost_unit_test_framework/<link>static /boost/filesystem//boost_filesystem/<link>static ]
